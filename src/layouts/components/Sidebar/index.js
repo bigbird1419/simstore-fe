@@ -1,5 +1,7 @@
-export default function Sidebar() {
+export default function Sidebar({ children }) {
     return (
-        <div className="wrapper">Sidebar</div>
+        <div className="wrapper">
+                {children}
+        </div>
     )
 }
