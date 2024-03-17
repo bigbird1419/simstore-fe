@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Search from '../components/Search'
 import Sidebar from '../components/Sidebar'
 import SideSimBar from '../components/SideSimBar'
+import Supporters from '../components/Supporters'
 
 export function DefaultLayout({ children }) {
     return (
@@ -31,6 +32,11 @@ export function DefaultLayout({ children }) {
                             <div>
                                 <Sidebar>
                                     <ClientOrders />
+                                </Sidebar>
+                            </div>
+                            <div className='mt-2'>
+                                <Sidebar>
+                                    <Supporters />
                                 </Sidebar>
                             </div>
                         </div>
