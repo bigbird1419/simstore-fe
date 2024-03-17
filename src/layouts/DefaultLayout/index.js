@@ -1,3 +1,4 @@
+import ClientOrders from '../components/ClientOrders'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Search from '../components/Search'
@@ -28,7 +29,9 @@ export function DefaultLayout({ children }) {
                         </div>
                         <div className='col-3'>
                             <div>
-                                <Sidebar />
+                                <Sidebar>
+                                    <ClientOrders />
+                                </Sidebar>
                             </div>
                         </div>
                     </div>

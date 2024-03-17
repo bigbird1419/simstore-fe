@@ -10,15 +10,17 @@ const cx = classNames.bind(styles)
 export default function Header() {
     return (
         <div className="wrapper">
-            <div>
-                <HeaderBanner />
-            </div>
-            <div>
-                <NavMenu
-                    className={cx('flex bg-colorPrimary mt-2')} content={category}
-                    classNameItem={cx('px-4 py-2 text-white text-md font-semibold uppercase hover:bg-colorSecondary transition-all duration-300')}
-                    activeClass={cx('bg-colorSecondary')}
-                />
+            <div className="container">
+                <div>
+                    <HeaderBanner />
+                </div>
+                <div>
+                    <NavMenu
+                        className={cx('flex bg-colorPrimary mt-2')} content={category}
+                        classNameItem={cx('px-4 py-2 text-white text-md font-semibold uppercase hover:bg-colorSecondary transition-all duration-300')}
+                        activeClass={cx('bg-colorSecondary')}
+                    />
+                </div>
             </div>
         </div>
     )
