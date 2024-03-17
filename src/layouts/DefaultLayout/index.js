@@ -1,3 +1,4 @@
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Search from '../components/Search'
 import Sidebar from '../components/Sidebar'
@@ -6,7 +7,9 @@ export function DefaultLayout({ children }) {
     return (
         <div className="wrapper">
             <div className="container">
-                <Header />
+                <div>
+                    <Header />
+                </div>
                 <div className='mt-2'>
                     <div className='row'>
                         <div className='col-3'>
@@ -22,6 +25,9 @@ export function DefaultLayout({ children }) {
                             <Sidebar />
                         </div>
                     </div>
+                </div>
+                <div>
+                    <Footer />
                 </div>
             </div>
         </div>
