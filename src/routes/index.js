@@ -1,10 +1,25 @@
 import routes from '../constants/routes'
 import Home from '../pages/Home'
 import Sim from '../pages/Sim'
+import Category from '../pages/Category'
+import AdminHome from '../pages/AdminHome'
+import AdminCategorys from '../pages/AdminCategorys'
+import AdminClientOrders from '../pages/AdminClientOrders'
+import AdminNetworkers from '../pages/AdminNetworkers'
+import AdminSims from '../pages/AdminSims'
 
 const publicRoutes = [
     { path: routes.home, component: Home },
+    { path: routes.category, component: Category },
     { path: routes.sim, component: Sim },
 ]
 
-export { publicRoutes }
+const privateRoutes = [
+    { path: routes.admin, component: AdminHome },
+    { path: routes.adminCategory, component: AdminCategorys },
+    { path: routes.adminClientOrder, component: AdminClientOrders },
+    { path: routes.adminNetworker, component: AdminNetworkers },
+    { path: routes.adminSim, component: AdminSims },
+]
+
+export { publicRoutes, privateRoutes }

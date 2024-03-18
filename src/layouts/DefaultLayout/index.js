@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar'
 import SideSimBar from '../components/SideSimBar'
 import Supporters from '../components/Supporters'
 
-export function DefaultLayout({ children }) {
+export default function DefaultLayout({ children }) {
     return (
         <div className="wrapper">
             <div className="container">
