@@ -11,7 +11,8 @@ module.exports = {
         colorSemiPrimary: '#1d9ce5',
         colorDark: '#181c31',
         colorLight: '#fff',
-        ccc: '#ccc'
+        colorCcc: '#ccc',
+        colorDadada: '#dadada'
       },
       zIndex: {
         '100': '100',

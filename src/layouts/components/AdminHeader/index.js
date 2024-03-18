@@ -9,7 +9,7 @@ export default function AdminHeader() {
     return (
         <div className="wrapper">
             <div className="container">
-                <div className='flex justify-between items-center px-4 py-2 bg-colorPrimary shadow-md'>
+                <div className='flex justify-between items-center px-4 py-2 bg-colorPrimary  shadow-md'>
                     <div className="border-r border-r-white my-2 p-2">
                         <Button className={cx('text-2xl font-bold text-white')} to={'/'}>SimStore</Button>
                     </div>

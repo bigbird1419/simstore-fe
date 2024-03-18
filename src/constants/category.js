@@ -6,6 +6,7 @@ const category = [
     { path: '/lien-he', title: 'Liên hệ' },
     { path: '/thanh-toan', title: 'Thanh toán' },
     { path: '/dang-ky-3g-4g', title: 'Đăng ký 3-4G' },
+    { path: '/admin', title: 'Login' },
 ]
 
 export default category

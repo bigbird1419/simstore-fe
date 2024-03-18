@@ -1,4 +1,5 @@
 import classNames from "classnames/bind"
+import { useLocation } from "react-router-dom"
 
 import styles from './AdminSidebar.module.css'
 import routes from "../../../constants/routes"
@@ -14,14 +15,16 @@ const sidebars = [
 ]
 
 export default function AdminSidebar() {
+    const currentPage = useLocation().pathname
+
     return (
         <div className='wrapper'>
             <div className='container'>
-                <div>
+                <div className="">
                     {sidebars.map((sidebar, i) => (
-                        <div key={i} className="px-4 py-2 border-b border-b-gray-200">
+                        <div key={i} className="border-b border-b-gray-200">
                             <Button
-                                className={cx('text-xl font-bold', 'nav-side')}
+                                className={cx('block bg-colorPrimary text-xl text-white font-bold px-4 py-2 hover:bg-colorSecondary transition duration-300', 'nav-side', currentPage === sidebar.path ? 'bg-colorSecondary' : '')}
                                 to={sidebar.path}
                             >
                                 <span className="flex justify-center items-center w-6 h-6 text-xs mr-3">{sidebar.icon}</span>
