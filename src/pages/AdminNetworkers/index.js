@@ -49,8 +49,6 @@ export default function AdminNetworkers() {
         try {
             setIsLoading(true)
             const imgURL = await uploadImg(networkerName, fileImg) || curNetworker.imgURL
-            console.log('link: ', imgURL)
-
             const data = await saveNetWorker(curNetworker.id,
                 {
                     name: networkerName,
@@ -175,13 +173,13 @@ export default function AdminNetworkers() {
                                         </div>
                                     </div>
                                     <div className="flex justify-end">
-                                        <Button primary className={cx('mr-6')}
+                                        <Button primary className={cx('mr-6  hover:bg-colorSecondary transition-all duration-300')}
                                             onClick={hanldeCreateNetworker}
                                         >Thêm</Button>
-                                        <Button primary className={cx('mr-6')}
+                                        <Button primary className={cx('mr-6 hover:bg-colorSecondary transition-all duration-300')}
                                             onClick={handleSaveNetworker}
                                         >Sửa</Button>
-                                        <Button primary className={cx('')}
+                                        <Button primary className={cx(' hover:bg-colorSecondary transition-all duration-300')}
                                             onClick={handleDeleteNetworkers}
                                         >Xóa</Button>
                                     </div>
