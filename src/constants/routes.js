@@ -7,6 +7,7 @@ const routes = {
     adminCategory: '/admin/category',
     adminNetworker: '/admin/networker',
     adminClientOrder: '/admin/clientorder',
+    login: '/login'
 }
 
 export default routes

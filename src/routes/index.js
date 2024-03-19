@@ -1,4 +1,5 @@
 import routes from '../constants/routes'
+import NoContentLayout from '../layouts/NoContentLayout'
 import Home from '../pages/Home'
 import Sim from '../pages/Sim'
 import Category from '../pages/Category'
@@ -7,11 +8,13 @@ import AdminCategorys from '../pages/AdminCategorys'
 import AdminClientOrders from '../pages/AdminClientOrders'
 import AdminNetworkers from '../pages/AdminNetworkers'
 import AdminSims from '../pages/AdminSims'
+import Login from '../pages/Login'
 
 const publicRoutes = [
     { path: routes.home, component: Home },
     { path: routes.category, component: Category },
     { path: routes.sim, component: Sim },
+    { path: routes.login, component: Login, layout: NoContentLayout },
 ]
 
 const privateRoutes = [

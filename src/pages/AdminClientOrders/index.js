@@ -55,7 +55,7 @@ const clientOrders = [
 
 
 export default function AdminClientOrders() {
-    const [isShowCreate, setIsShowCreate] = useState(true)
+    const [isShowCreate, setIsShowCreate] = useState(false)
 
     const handleToggleShowCreate = () => {
         setIsShowCreate(val => !val)
@@ -168,10 +168,10 @@ export default function AdminClientOrders() {
                                             </td>
                                             <td>
                                                 <Button className={cx('mr-6')}>
-                                                    <i class="far fa-edit mr-2"></i> Sửa
+                                                    <i className="far fa-edit mr-2"></i> Sửa
                                                 </Button>
                                                 <Button>
-                                                    <i class="fas fa-times mr-2"></i> Xóa
+                                                    <i className="fas fa-times mr-2"></i> Xóa
                                                 </Button>
                                             </td>
                                         </tr>

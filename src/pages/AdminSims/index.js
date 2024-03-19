@@ -124,10 +124,10 @@ export default function AdminSims() {
                                             </td>
                                             <td>
                                                 <Button className={cx('mr-6')}>
-                                                    <i class="far fa-edit mr-2"></i> Sửa
+                                                    <i className="far fa-edit mr-2"></i> Sửa
                                                 </Button>
                                                 <Button>
-                                                    <i class="fas fa-times mr-2"></i> Xóa
+                                                    <i className="fas fa-times mr-2"></i> Xóa
                                                 </Button>
                                             </td>
                                         </tr>

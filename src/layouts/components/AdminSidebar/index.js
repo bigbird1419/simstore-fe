@@ -7,11 +7,11 @@ import Button from '../../../components/Button'
 
 const cx = classNames.bind(styles)
 const sidebars = [
-    { title: 'Dashboard', path: routes.admin, icon: <i class="fas fa-home"></i> },
-    { title: 'Networkers', path: routes.adminNetworker, icon: <i class="fas fa-credit-card"></i> },
-    { title: 'Categorys', path: routes.adminCategory, icon: <i class="fas fa-th"></i> },
-    { title: 'Sims', path: routes.adminSim, icon: <i class="fas fa-sim-card"></i> },
-    { title: 'Client Orders', path: routes.adminClientOrder, icon: <i class="fas fa-shopping-cart"></i> },
+    { title: 'Dashboard', path: routes.admin, icon: <i className="fas fa-home"></i> },
+    { title: 'Networkers', path: routes.adminNetworker, icon: <i className="fas fa-credit-card"></i> },
+    { title: 'Categorys', path: routes.adminCategory, icon: <i className="fas fa-th"></i> },
+    { title: 'Sims', path: routes.adminSim, icon: <i className="fas fa-sim-card"></i> },
+    { title: 'Client Orders', path: routes.adminClientOrder, icon: <i className="fas fa-shopping-cart"></i> },
 ]
 
 export default function AdminSidebar() {
