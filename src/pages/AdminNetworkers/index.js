@@ -129,7 +129,7 @@ export default function AdminNetworkers() {
             })
         }
     }
-    
+
 
     useEffect(() => {
         const getData = async () => {
@@ -204,6 +204,9 @@ export default function AdminNetworkers() {
                                                 <span >Tên nhà mạng</span>
                                             </td>
                                             <td>
+                                                <span >Đường dẫn tĩnh</span>
+                                            </td>
+                                            <td>
                                                 <span >Mô tả</span>
                                             </td>
                                             <td>
@@ -222,6 +225,9 @@ export default function AdminNetworkers() {
                                             <tr key={i} >
                                                 <td>
                                                     <span className="uppercase">{networker.name}</span>
+                                                </td>
+                                                <td>
+                                                    <span className="uppercase">{networker.code}</span>
                                                 </td>
                                                 <td>
                                                     <span className="uppercase">{networker.description}</span>

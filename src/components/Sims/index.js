@@ -3,13 +3,13 @@ import { memo, useEffect, useState } from "react";
 
 import styles from './Sims.module.css'
 import Pagination from '../Pagination'
-import { getSimsByCategory } from '../../services/simService'
+import { getSims } from '../../services/simService'
 import Sim from "../Sim";
 import Loader from "../Loader";
 
 const cx = classNames.bind(styles)
 
-function Sims({ query, category = '', networker = '' }) {
+function Sims({ query, category = '' }) {
     const [sims, setSims] = useState([])
     const [totalPage, setTotalPage] = useState(0)
     const [curPage, setCurPage] = useState(1)
@@ -18,13 +18,13 @@ function Sims({ query, category = '', networker = '' }) {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await getSimsByCategory(query, curPage, 10, category, networker)
+            const res = await getSims(query, curPage, 10, category, category)
             setSims(res.data)
             setTotalPage(res.totalPage)
             setIsLoading(false)
         }
         getData()
-    }, [curPage, query, category, networker])
+    }, [curPage, query, category])
 
     return (
         <div className="wrapper">

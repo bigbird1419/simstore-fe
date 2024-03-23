@@ -13,7 +13,6 @@ import Login from '../pages/Login'
 const publicRoutes = [
     { path: routes.home, component: Home },
     { path: routes.category, component: Category },
-    { path: routes.networker, component: Category },
     { path: routes.sim, component: Sim },
     { path: routes.login, component: Login, layout: NoContentLayout },
 ]
