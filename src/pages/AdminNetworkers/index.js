@@ -45,6 +45,9 @@ export default function AdminNetworkers() {
         setNetWorkerDescript('')
         setNetWorkerName('')
     }
+    const handleHiddenMessage = () => {
+        setIsShowMessage(false)
+    }
     const handleSaveNetworker = async () => {
         try {
             setIsLoading(true)
@@ -74,6 +77,14 @@ export default function AdminNetworkers() {
     }
     const hanldeCreateNetworker = async () => {
         try {
+            if (networkerName === '' || networkerDescript === '' || networkerCode === '') {
+                setIsShowMessage(true)
+                setContentMessage({
+                    type: 'warning',
+                    message: 'Vui lòng nhập đủ dữ liệu'
+                })
+                return
+            }
             setIsLoading(true)
             const imgURL = await uploadImg(networkerName, fileImg);
             const data = await createNetWorker(
@@ -118,9 +129,7 @@ export default function AdminNetworkers() {
             })
         }
     }
-    const handleHiddenMessage = () => {
-        setIsShowMessage(false)
-    }
+    
 
     useEffect(() => {
         const getData = async () => {

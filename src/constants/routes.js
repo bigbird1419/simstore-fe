@@ -1,6 +1,7 @@
 const routes = {
     home: '/',
     category: '/:category',
+    networker: '/:networker',
     sim: '/sim/:simNumber',
     admin: '/admin',
     adminSim: '/admin/sim',

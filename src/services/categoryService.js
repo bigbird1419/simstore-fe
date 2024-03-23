@@ -9,6 +9,15 @@ export const getCategorys = async () => {
     }
 }
 
+export const getCategoryById = async (id) => {
+    try {
+        const res = await axios.get(`http://localhost:8088/api/v1/categorys/${id}`)
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const postCategory = async (data) => {
     try {
         const res = await axios.post('http://localhost:8088/api/v1/categorys', data)

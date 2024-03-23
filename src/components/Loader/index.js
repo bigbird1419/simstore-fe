@@ -5,7 +5,7 @@ export default function Loader() {
         <div
             className='fixed bg-white top-0 right-0 bottom-0 left-0 flex justify-center items-center z-50'
         >
-            <ClipLoader color="#4e6bff" speedMultiplier={1} />
+            <ClipLoader color="#4e6bff" speedMultiplier={1} size={50}/>
         </div>
     )
 }
