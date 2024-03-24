@@ -2,6 +2,7 @@ import classNames from "classnames/bind"
 
 import styles from './Search.module.css'
 import Button from "../../../components/Button"
+import { useState } from "react"
 
 const cx = classNames.bind(styles)
 
@@ -12,6 +13,8 @@ const contentSearch = [
 ]
 
 export default function Search() {
+    const [valSearch, setValSearch] = useState('')
+
     return (
         <div className="wrapper">
             <div className="container">
@@ -23,9 +26,10 @@ export default function Search() {
                     </div>
                     <div className="bg-colorPrimary p-3">
                         <form className="relative border border-white">
-                            <input className="w-100 px-3 py-1 outline-none text-md" type="text" placeholder="Nhập số cần tìm" required />
+                            <input className="w-100 px-3 py-1 outline-none text-md" type="text" placeholder="Nhập số cần tìm" required value={valSearch} onChange={e => setValSearch(e.target.value)} />
                             <Button
                                 className={cx('bg-colorSemiPrimary absolute top-1/2 right-0 translate-y-[-50%] px-3 py-1 text-white text-md font-semibold')}
+                                to={`/sim/${valSearch}`}
                             >
                                 Tìm Sim
                             </Button>

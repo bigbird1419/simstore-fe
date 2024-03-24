@@ -40,7 +40,7 @@ function Sims({ query, category = '' }) {
                                 ))}
                             </div>
                             :
-                            <h1>Không còn sim loại này</h1>
+                            <h1 className="text-center text-xl font-bold text-colorSecondary">Không còn sim loại này</h1>
                         }
                     </div>
                     <div>

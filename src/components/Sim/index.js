@@ -14,9 +14,9 @@ export default function Sim({ sim }) {
         >
             <div className={cx('flex justify-between')}>
                 <img className="w-10" src={sim.networker.imgUrl} alt={sim.phoneNumber} />
-                <div className="text-left">
-                    <p className="text-left text-xl text-colorPrimary font-bold transition-all duration-300 hover:underline">{sim.phoneNumber}</p>
-                    <p className="text-left text-md text-colorPrimary  transition-all duration-300 hover:underline">{sim.price}<sup>₫</sup></p>
+                <div className="flex flex-col  justify-between">
+                    <p className="flex justify-end text-xl text-colorPrimary font-bold transition-all duration-300 hover:underline">{sim.phoneNumber}</p>
+                    <p className="flex justify-end items-end text-md text-colorSecondary  transition-all duration-300 hover:underline">{sim.price}<sup>₫</sup></p>
                 </div>
             </div>
         </Button>

@@ -36,26 +36,28 @@ function Pagination({ totalPage, curPage, setCurPage = () => { } }) {
     return (
         <div className="wrapper">
             <div className="container">
-                <div className="mt-6 flex justify-end">
-                    <Button normal onClick={() => handlePrevPage()}
-                        className={cx('block text-md px-4 py-2 m-2', curPage === 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
-                    >
-                        <i className="fa-solid fa-angle-left"></i>
-                    </Button>
-
-                    {pages.map((page) => (
-                        <Button key={page} normal onClick={() => handleSetCurPage(page)}
-                            className={cx('block text-md px-4 py-2 m-2', page === curPage ? 'bg-colorPrimary text-white' : 'border border-2 border-cyan-400')}
+                {pages.length > 0 &&
+                    <div className="mt-6 flex justify-end">
+                        <Button normal onClick={() => handlePrevPage()}
+                            className={cx('block text-md px-4 py-2 m-2', curPage === 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
                         >
-                            {page}
+                            <i className="fa-solid fa-angle-left"></i>
                         </Button>
-                    ))}
-                    <Button normal onClick={() => handleNextPage()}
-                        className={cx('block text-md px-4 py-2 m-2', curPage === totalPage - 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
-                    >
-                        <i className="fa-solid fa-angle-right"></i>
-                    </Button>
-                </div>
+
+                        {pages.map((page) => (
+                            <Button key={page} normal onClick={() => handleSetCurPage(page)}
+                                className={cx('block text-md px-4 py-2 m-2', page === curPage ? 'bg-colorPrimary text-white' : 'border border-2 border-cyan-400')}
+                            >
+                                {page}
+                            </Button>
+                        ))}
+                        <Button normal onClick={() => handleNextPage()}
+                            className={cx('block text-md px-4 py-2 m-2', curPage === totalPage - 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
+                        >
+                            <i className="fa-solid fa-angle-right"></i>
+                        </Button>
+                    </div>
+                }
             </div>
         </div>
     )

@@ -6,7 +6,7 @@ export default function MenuItem({
 }) {
     return (
         <div className={classname}>
-            <Button to={content.path}>{content.title}</Button>
+            <Button to={content.path} className={'uppercase'}>{content.title}</Button>
         </div>
     )
 }

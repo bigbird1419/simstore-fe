@@ -1,12 +1,23 @@
 import classNames from "classnames/bind"
 
 import styles from './ClientOrder.module.css'
-import clienOrders from '../../../constants/clientOrders'
 import ClientOrderItems from "./ClientOrderItem"
+import { getClientOrders } from '../../../services/clientOrderService'
+import { useEffect, useState } from "react"
 
 const cx = classNames.bind(styles)
 
 export default function ClientOrder() {
+    const [clientOrders, setClientOrders] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const res = await getClientOrders()
+            setClientOrders(res.data)
+        }
+        getData()
+    }, [])
+
     return (
         <div className="wrapper">
             <div className="container">
@@ -15,7 +26,7 @@ export default function ClientOrder() {
                         ĐƠN HÀNG MỚI
                     </h1>
                     <div>
-                        {clienOrders.map((order, i) => (
+                        {clientOrders.map((order, i) => (
                             <ClientOrderItems className={cx('')} data={order} key={i} />
                         ))}
                     </div>
