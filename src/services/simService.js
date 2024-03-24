@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getSims = async (query = '', page = 1, limit = 10, categoryCode, networkerCode) => {
+export const getSims = async (query = '', page = 1, limit = 10, categoryCode = '', networkerCode = '') => {
     try {
         const res = await axios.get(`http://localhost:8088/api/v1/sims?query=${query}&page=${page}&limit=${limit}&categoryCode=${categoryCode}&networkerCode=${networkerCode}`)
         return res.data;
@@ -29,7 +29,7 @@ export const putSim = async (id, data) => {
 
 export const delSims = async (ids = []) => {
     try {
-        const res = await axios.delete('http://localhost:8088/api/v1/sims/', ids)
+        const res = await axios.delete('http://localhost:8088/api/v1/sims', ids)
         return res.data
     } catch (error) {
         console.log(error)
