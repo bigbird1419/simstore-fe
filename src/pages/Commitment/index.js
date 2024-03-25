@@ -7,7 +7,7 @@ export default function Commitment() {
     return (
         <div className="wrapper">
             <div className="container">
-                <h1 className="px-4 py-2 bg-colorPrimary text-md font-bold text-white text-center">
+                <h1 className="px-4 py-2  mt-4 bg-colorPrimary text-md font-bold text-white text-center">
                     CAM KẾT BÁN HÀNG
                 </h1>
                 <strong className="my-4 block">Cam kết bán hàng "Uy tín chính là sự sống còn của công ty"</strong>

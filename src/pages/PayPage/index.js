@@ -3,8 +3,8 @@ export default function PayPage() {
     return (
         <div className="wrapper">
             <div className="container">
-                <h1 className="px-4 py-2 bg-colorPrimary text-md font-bold text-white text-center">
-                    LIÊN HỆ
+                <h1 className="px-4 py-2 mt-4 bg-colorPrimary text-md font-bold text-white text-center">
+                    THANH TOÁN
                 </h1>
                 <div className="my-4">
                     <p className="text-xl">

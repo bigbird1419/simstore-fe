@@ -20,11 +20,11 @@ const publicRoutes = [
     { path: routes.category, component: Category },
     { path: routes.sim, component: Sim },
     { path: routes.login, component: Login, layout: NoContentLayout },
-    { path: routes.blogs, component: Blogs, layout: NoContentLayout },
-    { path: routes.commit, component: Commitment, layout: NoContentLayout },
-    { path: routes.contact, component: Contact, layout: NoContentLayout },
-    { path: routes.pay, component: PayPage, layout: NoContentLayout },
-    { path: routes.register, component: RegisterInternet, layout: NoContentLayout },
+    { path: routes.blogs, component: Blogs },
+    { path: routes.commit, component: Commitment },
+    { path: routes.contact, component: Contact },
+    { path: routes.pay, component: PayPage },
+    { path: routes.register, component: RegisterInternet },
 ]
 
 const privateRoutes = [
