@@ -7,7 +7,12 @@ const routes = {
     adminCategory: '/admin/category',
     adminNetworker: '/admin/networker',
     adminClientOrder: '/admin/clientorder',
-    login: '/login'
+    login: '/login',
+    blogs: '/tin-tuc',
+    commit: '/cam-ket',
+    contact: '/lien-he',
+    pay: '/thanh-toan',
+    register: '/dang-ky-3g-4g'
 }
 
 export default routes

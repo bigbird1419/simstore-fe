@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getSims = async (query = '', page = 1, limit = 10, categoryCode = '', networkerCode = '') => {
+export const getSims = async (query = '', page = 1, limit = 10, categoryCode = '', networkerCode = '', sort = 'id', direction = 'asc') => {
     try {
-        const res = await axios.get(`http://localhost:8088/api/v1/sims?query=${query}&page=${page}&limit=${limit}&categoryCode=${categoryCode}&networkerCode=${networkerCode}`)
+        const res = await axios.get(`http://localhost:8088/api/v1/sims?query=${query}&page=${page}&limit=${limit}&categoryCode=${categoryCode}&networkerCode=${networkerCode}&sort=${sort}&direction=${direction}`)
         return res.data;
     } catch (error) {
         console.log(error);

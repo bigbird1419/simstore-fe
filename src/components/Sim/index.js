@@ -10,7 +10,7 @@ export default function Sim({ sim }) {
     return (
         <Button
             to={`/sim/${sim.phoneNumber}`}
-            className={cx('sim-box', 'block p-2 mb-2 border rounded-md border-colorPrimary')}
+            className={cx('sim-box', 'block p-2 mb-4 border-1 rounded-br-lg border-colorPrimary')}
         >
             <div className={cx('flex justify-between')}>
                 <img className="w-10" src={sim.networker.imgUrl} alt={sim.phoneNumber} />

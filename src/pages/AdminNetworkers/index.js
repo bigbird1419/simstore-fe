@@ -201,22 +201,22 @@ export default function AdminNetworkers() {
                                     <thead>
                                         <tr>
                                             <td>
-                                                <span >Tên nhà mạng</span>
+                                                <span className="text-xs">Tên nhà mạng</span>
                                             </td>
                                             <td>
-                                                <span >Đường dẫn tĩnh</span>
+                                                <span className="text-xs">Đường dẫn tĩnh</span>
                                             </td>
                                             <td>
-                                                <span >Mô tả</span>
+                                                <span className="text-xs">Mô tả</span>
                                             </td>
                                             <td>
-                                                <span>Ảnh đại diện</span>
+                                                <span className="text-xs">Ảnh đại diện</span>
                                             </td>
                                             <td>
-                                                <span>Ngày tạo - Ngày sửa</span>
+                                                <span className="text-xs">Ngày tạo - Ngày sửa</span>
                                             </td>
                                             <td>
-                                                <span>Hành động</span>
+                                                <span className="text-xs">Hành động</span>
                                             </td>
                                         </tr>
                                     </thead>
@@ -224,26 +224,26 @@ export default function AdminNetworkers() {
                                         {networkers.map((networker, i) => (
                                             <tr key={i} >
                                                 <td>
-                                                    <span className="uppercase">{networker.name}</span>
+                                                    <span className="text-xs">{networker.name}</span>
                                                 </td>
                                                 <td>
-                                                    <span className="uppercase">{networker.code}</span>
+                                                    <span className="text-xs">{networker.code}</span>
                                                 </td>
                                                 <td>
-                                                    <span className="uppercase">{networker.description}</span>
+                                                    <span className="text-xs">{networker.description}</span>
                                                 </td>
                                                 <td>
-                                                    <span><img className="w-32" src={networker.imgUrl} alt={networker.name} /></span>
+                                                    <span><img className="w-10" src={networker.imgUrl} alt={networker.name} /></span>
                                                 </td>
                                                 <td>
-                                                    <span>{networker.createdDate} - {networker.modifiedDate || 'Không có'}</span>
+                                                    <span  className="text-xs">{networker.createdDate} - {networker.modifiedDate || 'Không có'}</span>
                                                 </td>
                                                 <td>
-                                                    <Button className={cx('mr-8 hover:opacity-80')} onClick={() => handleEditNetworker(networker)}>
+                                                    <Button className={cx('mr-8 hover:opacity-80 text-xs')} onClick={() => handleEditNetworker(networker)}>
                                                         <i className="far fa-edit mr-2"></i> Sửa
                                                     </Button>
                                                     <Button
-                                                        className={cx('hover:opacity-80')}
+                                                        className={cx('hover:opacity-80 text-xs')}
                                                         onClick={async () => await deleNetworkerById(networker.id)}
                                                     >
                                                         <i className="fas fa-times mr-2"></i> Xóa

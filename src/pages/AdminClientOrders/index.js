@@ -141,13 +141,13 @@ export default function AdminClientOrders() {
                                                         <input className="w-100 text-xs" type="text" value={clientOrder.status} onChange={e => hanldeChangeStatus(e, i)} />
                                                     </td>
                                                     <td>
-                                                        <Button className={cx('mr-6 text-xs')}
+                                                        <Button className={cx('mr-6 text-xs hover:opacity-80')}
                                                             onClick={() => handleEditClientOrder(i)}
                                                         >
                                                             <i className="far fa-edit mr-2"></i> Sửa
                                                         </Button>
                                                         <Button
-                                                            className={cx(' text-xs')}
+                                                            className={cx(' text-xs hover:opacity-80')}
                                                             onClick={async () => await deleClientOrderById(clientOrder.id)}
                                                         >
                                                             <i className="fas fa-times mr-2"></i> Xóa

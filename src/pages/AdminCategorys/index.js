@@ -181,16 +181,16 @@ export default function AdminCategorys() {
                                     <thead>
                                         <tr>
                                             <td>
-                                                <span >Tên danh mục</span>
+                                                <span  className="text-xs">Tên danh mục</span>
                                             </td>
                                             <td>
-                                                <span >Mô tả</span>
+                                                <span  className="text-xs">Mô tả</span>
                                             </td>
                                             <td>
-                                                <span >Ngày tạo - Ngày sửa</span>
+                                                <span  className="text-xs">Ngày tạo - Ngày sửa</span>
                                             </td>
                                             <td>
-                                                <span>Hành động</span>
+                                                <span  className="text-xs">Hành động</span>
                                             </td>
                                         </tr>
                                     </thead>
@@ -198,21 +198,21 @@ export default function AdminCategorys() {
                                         {categorys.map((category, i) => (
                                             <tr key={i}>
                                                 <td>
-                                                    <span className="uppercase">{category.name}</span>
+                                                    <span className="text-xs">{category.name}</span>
                                                 </td>
                                                 <td>
-                                                    <span className="uppercase">{category.description}</span>
+                                                    <span className="text-xs">{category.description}</span>
                                                 </td>
                                                 <td>
-                                                    <span className="">{category.createdDate} - {category.modifiedDate || 'Không có'}</span>
+                                                    <span className="text-xs">{category.createdDate} - {category.modifiedDate || 'Không có'}</span>
                                                 </td>
                                                 <td>
-                                                    <Button className={cx('mr-6 hover:opacity-80')}
+                                                    <Button className={cx('mr-6 hover:opacity-80 text-xs')}
                                                         onClick={() => hanldeEditCategory(category)}
                                                     >
                                                         <i className="far fa-edit mr-2"></i> Sửa
                                                     </Button>
-                                                    <Button className={cx('hover:opacity-80')}
+                                                    <Button className={cx('hover:opacity-80 text-xs')}
                                                         onClick={async () => await delCategoryById(category.id)}
                                                     >
                                                         <i className="fas fa-times mr-2"></i> Xóa

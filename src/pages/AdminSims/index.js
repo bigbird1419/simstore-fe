@@ -66,12 +66,9 @@ export default function AdminSims() {
     const handleHiddenMessage = () => {
         setIsShowMessage(false)
     }
-    const hanldeSearch = (e) => {
-        if (e.code === 'Enter') {
-            setIsLoading(true)
-            setQuery(valSearch)
-            setIsLoading(false)
-        }
+    const hanldeSearch = () => {
+        setQuery(valSearch)
+        setValSearch('')
     }
 
     const hanldeCreateSim = async () => {
@@ -258,13 +255,13 @@ export default function AdminSims() {
                                         </div>
                                     </div>
                                     <div className="flex justify-end">
-                                        <Button primary className={cx('mr-6')}
+                                        <Button primary className={cx('mr-6 ')}
                                             onClick={hanldeCreateSim}
                                         >Thêm</Button>
-                                        <Button primary className={cx('mr-6')}
+                                        <Button primary className={cx('mr-6 ')}
                                             onClick={handleUpdateSim}
                                         >Sửa</Button>
-                                        <Button primary className={cx('')}
+                                        <Button primary className={cx(' ')}
                                             onClick={handleDelSim}
                                         >Xóa</Button>
                                     </div>
@@ -276,24 +273,24 @@ export default function AdminSims() {
                                 <div className="my-4 p-2">
                                     <div className="row">
                                         <div className="col-6">
-                                            <label>
-                                                <select onChange={e => setLimit(e.target.value)} 
-                                                    className="p-2"
-                                                >
-                                                    <option value={10}>10</option>
-                                                    <option value={25}>25</option>
-                                                    <option value={50}>50</option>
-                                                    <option value={100}>100</option>
-                                                </select>
-                                            </label>
+                                            <select onChange={e => setLimit(e.target.value)}
+                                                className="p-2 mr-10"
+                                            >
+                                                <option value={10}>10</option>
+                                                <option value={25}>25</option>
+                                                <option value={50}>50</option>
+                                                <option value={100}>100</option>
+                                            </select>
                                         </div>
                                         <div className="col-6">
-                                            <label>
-                                                Tìm kiếm
-                                                <input onChange={e => setValSearch(e.target.value)} value={valSearch} onKeyDown={e => hanldeSearch(e)} type="text" placeholder="Nhập sim cần tìm" 
-                                                    className="px-4 py-2 ml-4 text-md outline-none"
+                                            <div className="relative">
+                                                <input onChange={e => setValSearch(e.target.value)} value={valSearch} onKeyDown={e => setValSearch(e.target.value)} type="text" placeholder="Nhập sim cần tìm"
+                                                    className="px-4 py-2 text-md outline-none w-full border-colorPrimary border-1 rounded-md"
                                                 />
-                                            </label>
+                                                <Button className={cx('absolute right-0 top-1/2 translate-y-[-50%] bg-colorPrimary block text-white px-3 py-1 mr-2 rounded-sm')} onClick={hanldeSearch} >
+                                                    Tìm
+                                                </Button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -301,25 +298,25 @@ export default function AdminSims() {
                                     <thead>
                                         <tr>
                                             <td>
-                                                <span >Số điện thoại</span>
+                                                <span className="text-xs">Số điện thoại</span>
                                             </td>
                                             <td>
-                                                <span >Ảnh mô tả</span>
+                                                <span className="text-xs">Ảnh mô tả</span>
                                             </td>
                                             <td>
-                                                <span >Giá</span>
+                                                <span className="text-xs">Giá</span>
                                             </td>
                                             <td>
-                                                <span >Mô tả</span>
+                                                <span className="text-xs">Mô tả</span>
                                             </td>
                                             <td>
-                                                <span >Thể loại</span>
+                                                <span className="text-xs">Thể loại</span>
                                             </td>
                                             <td>
-                                                <span >Trạng thái</span>
+                                                <span className="text-xs">Trạng thái</span>
                                             </td>
                                             <td>
-                                                <span>Hành động</span>
+                                                <span className="text-xs">Hành động</span>
                                             </td>
                                         </tr>
                                     </thead>
@@ -327,30 +324,31 @@ export default function AdminSims() {
                                         {sims.map((sim, i) => (
                                             <tr key={i}>
                                                 <td>
-                                                    <span>{sim.phoneNumber}</span>
+                                                    <span className="text-xs">{sim.phoneNumber}</span>
                                                 </td>
                                                 <td>
-                                                    <span><img className="w-32" src={sim.imgUrl} alt={sim.phoneNumber} /></span>
+                                                    <span className="text-xs"><img className="w-28" src={sim.imgUrl} alt={sim.phoneNumber} /></span>
                                                 </td>
                                                 <td>
-                                                    <span>{sim.price}</span>
+                                                    <span className="text-xs">{sim.price}</span>
                                                 </td>
                                                 <td>
-                                                    <span>{sim.description}</span>
+                                                    <span className="text-xs">{sim.description}</span>
                                                 </td>
                                                 <td>
-                                                    <span className="uppercase">{sim.networker.name}, {sim.category.name}</span>
+                                                    <span className="text-xs">{sim.networker.name}, {sim.category.name}</span>
                                                 </td>
                                                 <td>
-                                                    <span className="uppercase">{sim.status ? 'Còn hàng' : 'Hết hàng'}</span>
+                                                    <span className="text-xs">{sim.status ? 'Còn hàng' : 'Hết hàng'}</span>
                                                 </td>
                                                 <td>
-                                                    <Button className={cx('mr-6')}
+                                                    <Button className={cx('mr-6 text-xs hover:opacity-80')}
                                                         onClick={() => handleEditSim(sim)}
                                                     >
                                                         <i className="far fa-edit mr-2"></i> Sửa
                                                     </Button>
                                                     <Button
+                                                        className={cx(' text-xs hover:opacity-80')}
                                                         onClick={async () => { await delSimById(sim.id) }}
                                                     >
                                                         <i className="fas fa-times mr-2"></i> Xóa
