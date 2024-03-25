@@ -1,9 +1,9 @@
-export default function Blogs(){
+export default function Blogs() {
 
-    return(
+    return (
         <div className="wrapper">
             <div className="container">
-                Blogs page
+                
             </div>
         </div>
     )
