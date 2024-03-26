@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getClientOrders = async (query = '', page = 1, limit = 10) => {
+export const getClientOrders = async (query = '', page = 1, limit = 10, sort = 'id', direction = 'asc') => {
     try {
-        const res = await axios.get(`http://localhost:8088/api/v1/clientorders?query=${query}&page=${page}&limit=${limit}`)
+        const res = await axios.get(`http://localhost:8088/api/v1/clientorders?query=${query}&page=${page}&limit=${limit}&sort=${sort}&direction=${direction}`)
         return res.data;
     } catch (error) {
         console.log(error);

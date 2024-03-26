@@ -6,6 +6,7 @@ import Button from '../../components/Button'
 import { getCategorys, delCategoryById, postCategory, putCategory } from '../../services/categoryService'
 import Loader from '../../components/Loader'
 import Messages from '../../components/Messages'
+import FormatDate from '../../components/FormatDate'
 
 const cx = classNames.bind(styles)
 
@@ -181,16 +182,16 @@ export default function AdminCategorys() {
                                     <thead>
                                         <tr>
                                             <td>
-                                                <span  className="text-xs">Tên danh mục</span>
+                                                <span className="text-xs">Tên danh mục</span>
                                             </td>
                                             <td>
-                                                <span  className="text-xs">Mô tả</span>
+                                                <span className="text-xs">Mô tả</span>
                                             </td>
                                             <td>
-                                                <span  className="text-xs">Ngày tạo - Ngày sửa</span>
+                                                <span className="text-xs">Ngày tạo - Ngày sửa</span>
                                             </td>
                                             <td>
-                                                <span  className="text-xs">Hành động</span>
+                                                <span className="text-xs">Hành động</span>
                                             </td>
                                         </tr>
                                     </thead>
@@ -204,7 +205,9 @@ export default function AdminCategorys() {
                                                     <span className="text-xs">{category.description}</span>
                                                 </td>
                                                 <td>
-                                                    <span className="text-xs">{category.createdDate} - {category.modifiedDate || 'Không có'}</span>
+                                                    <span className="text-xs">
+                                                        <FormatDate createdDate={category.createdDate} /> - {category.modifiedDate ? <FormatDate createdDate={category.modifiedDate} /> : 'Không có'}
+                                                    </span>
                                                 </td>
                                                 <td>
                                                     <Button className={cx('mr-6 hover:opacity-80 text-xs')}

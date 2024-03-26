@@ -7,6 +7,7 @@ import { getNetworkers, saveNetWorker, createNetWorker, deleNetworkerById } from
 import { uploadImg } from '../../utils/uploadFile'
 import Loader from '../../components/Loader'
 import Messages from '../../components/Messages'
+import FormatDate from '../../components/FormatDate'
 
 const cx = classNames.bind(styles)
 
@@ -236,7 +237,9 @@ export default function AdminNetworkers() {
                                                     <span><img className="w-10" src={networker.imgUrl} alt={networker.name} /></span>
                                                 </td>
                                                 <td>
-                                                    <span  className="text-xs">{networker.createdDate} - {networker.modifiedDate || 'Không có'}</span>
+                                                    <span className="text-xs">
+                                                        <FormatDate createdDate={networker.createdDate} /> - {networker.modifiedDate ? <FormatDate createdDate={networker.modifiedDate} /> : 'Không có'}
+                                                    </span>
                                                 </td>
                                                 <td>
                                                     <Button className={cx('mr-8 hover:opacity-80 text-xs')} onClick={() => handleEditNetworker(networker)}>

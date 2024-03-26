@@ -11,6 +11,7 @@ import Loader from "../../components/Loader"
 import Messages from "../../components/Messages"
 import Pagination from "../../components/Pagination"
 
+
 const cx = classNames.bind(styles)
 
 export default function AdminSims() {
@@ -177,6 +178,7 @@ export default function AdminSims() {
 
     useEffect(() => {
         const getData = async () => {
+            setIsLoading(true)
             const res = await getSims(query, curPage, limit)
             setSims(res.data)
             setTotalPage(res.totalPage)
@@ -274,7 +276,7 @@ export default function AdminSims() {
                                     <div className="row">
                                         <div className="col-6">
                                             <select onChange={e => setLimit(e.target.value)}
-                                                className="p-2 mr-10"
+                                                className="p-2 mr-10" value={limit}
                                             >
                                                 <option value={10}>10</option>
                                                 <option value={25}>25</option>

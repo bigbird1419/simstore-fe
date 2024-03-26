@@ -3,7 +3,7 @@ import AdminSidebar from "../components/AdminSidebar"
 
 export default function AdminLayout({ children }) {
     return (
-        <div className="wrapper bg-colorDadada">
+        <div className="wrapper">
             <div className="container">
                 <div className='mb-4'>
                     <AdminHeader />

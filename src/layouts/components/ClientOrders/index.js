@@ -12,7 +12,7 @@ export default function ClientOrder() {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await getClientOrders()
+            const res = await getClientOrders('', 1, 10, 'createdDate', 'desc')
             setClientOrders(res.data)
         }
         getData()

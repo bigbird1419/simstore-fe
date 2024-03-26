@@ -7,6 +7,7 @@ import Pagination from '../../components/Pagination'
 import { getClientOrders, deleClientOrderById, putClientOrder } from '../../services/clientOrderService'
 import Messages from "../../components/Messages"
 import Loader from "../../components/Loader"
+import FormatDate from '../../components/FormatDate'
 
 const cx = classNames.bind(styles)
 
@@ -15,6 +16,7 @@ export default function AdminClientOrders() {
     const [totalPage, setTotalPage] = useState(0)
     const [curPage, setCurPage] = useState(1)
     const [limit, setLimit] = useState(10)
+    const [direction, setDirection] = useState('desc')
     const [isShowMessage, setIsShowMessage] = useState(false)
     const [contentMessage, setContentMessage] = useState({})
     const [isLoading, setIsLoading] = useState(false)
@@ -51,13 +53,13 @@ export default function AdminClientOrders() {
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true)
-            const res = await getClientOrders('', curPage, limit)
+            const res = await getClientOrders('', curPage, limit, 'createdDate', direction)
             setClientOrders(res.data)
             setTotalPage(res.totalPage)
             setIsLoading(false)
         }
         getData()
-    }, [curPage, limit])
+    }, [curPage, limit, direction])
 
     return (
         <div className="wrapper">
@@ -71,12 +73,18 @@ export default function AdminClientOrders() {
                                         <div className="col-6">
                                             <label>
                                                 <select onChange={e => setLimit(e.target.value)}
-                                                    className="p-2"
+                                                    className="p-2 mr-6" value={limit}
                                                 >
                                                     <option value={10}>10</option>
                                                     <option value={25}>25</option>
                                                     <option value={50}>50</option>
                                                     <option value={100}>100</option>
+                                                </select>
+                                            </label>
+                                            <label>
+                                                <select onChange={e => setDirection(e.target.value)} value={direction} className="p-2">
+                                                    <option value={'desc'}>Mới nhất</option>
+                                                    <option value={'asc'}>Cũ nhất</option>
                                                 </select>
                                             </label>
                                         </div>
@@ -132,7 +140,9 @@ export default function AdminClientOrders() {
                                                         <span className="text-xs">{clientOrder.description}</span>
                                                     </td>
                                                     <td>
-                                                        <span className="text-xs">{clientOrder.createdDate}</span>
+                                                        <span className="text-xs">
+                                                            <FormatDate createdDate={clientOrder.createdDate} />
+                                                        </span>
                                                     </td>
                                                     <td>
                                                         <span className=" text-xs">{clientOrder.payment}</span>
