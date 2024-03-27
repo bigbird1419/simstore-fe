@@ -9,6 +9,15 @@ export const getSims = async (query = '', page = 1, limit = 10, categoryCode = '
     }
 }
 
+export const getTotalSim = async () => {
+    try {
+        const res = await axios.get('http://localhost:8088/api/v1/sims/count')
+        return res.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const postSim = async (data) => {
     try {
         const res = await axios.post('http://localhost:8088/api/v1/sims', data)

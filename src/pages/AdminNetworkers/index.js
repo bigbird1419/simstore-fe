@@ -1,19 +1,21 @@
 import classNames from "classnames/bind"
-import { useEffect, useState } from "react"
+import { useContext, useState } from "react"
 
 import styles from './AdminNetworkers.module.css'
 import Button from '../../components/Button'
-import { getNetworkers, saveNetWorker, createNetWorker, deleNetworkerById } from '../../services/networkersService'
+import { saveNetWorker, createNetWorker, deleNetworkerById } from '../../services/networkersService'
 import { uploadImg } from '../../utils/uploadFile'
 import Loader from '../../components/Loader'
 import Messages from '../../components/Messages'
 import FormatDate from '../../components/FormatDate'
+import requireAuth from "../../hook/requireAuth"
+import { NetworkerContext } from '../../context/NetworkerContext'
 
 const cx = classNames.bind(styles)
 
-export default function AdminNetworkers() {
+function AdminNetworkers() {
     const [isShowCreate, setIsShowCreate] = useState(false)
-    const [networkers, setNetworkers] = useState([])
+    const { networkers } = useContext(NetworkerContext)
     const [curNetworker, setCurNetworker] = useState({})
     const [networkerName, setNetWorkerName] = useState('')
     const [networkerCode, setNetWorkerCode] = useState('')
@@ -21,7 +23,7 @@ export default function AdminNetworkers() {
     const [fileImg, setFileImg] = useState()
     const [isShowMessage, setIsShowMessage] = useState(false)
     const [contentMessage, setContentMessage] = useState({})
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleFileChange = (e) => {
         setFileImg(e.target.files[0])
@@ -130,16 +132,6 @@ export default function AdminNetworkers() {
             })
         }
     }
-
-
-    useEffect(() => {
-        const getData = async () => {
-            let res = await getNetworkers()
-            setNetworkers(res.data);
-            setIsLoading(false)
-        }
-        getData()
-    }, [networkers])
 
     return (
         <div className="wrapper">
@@ -269,3 +261,5 @@ export default function AdminNetworkers() {
         </div>
     )
 }
+
+export default requireAuth(AdminNetworkers)

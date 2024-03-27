@@ -9,9 +9,36 @@ export const getClientOrders = async (query = '', page = 1, limit = 10, sort = '
     }
 }
 
+export const getTotalClientOrders = async () => {
+    try {
+        const res = await axios.get('http://localhost:8088/api/v1/clientorders/count')
+        return res.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getClientOrdersById = async (id) => {
     try {
         const res = await axios.get(`http://localhost:8088/api/v1/clientorders/${id}`)
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getStatistical = async () => {
+    try {
+        const res = await axios.get('http://localhost:8088/api/v1/clientorders/statistical/')
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getStatisticalByNetworker = async () => {
+    try {
+        const res = await axios.get('http://localhost:8088/api/v1/clientorders/statistical/sim')
         return res.data;
     } catch (error) {
         console.log(error);

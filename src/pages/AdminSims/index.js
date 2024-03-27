@@ -10,11 +10,11 @@ import { uploadImg } from '../../utils/uploadFile'
 import Loader from "../../components/Loader"
 import Messages from "../../components/Messages"
 import Pagination from "../../components/Pagination"
-
+import requireAuth from "../../hook/requireAuth"
 
 const cx = classNames.bind(styles)
 
-export default function AdminSims() {
+function AdminSims() {
     const [isShowCreate, setIsShowCreate] = useState(false)
     const [sims, setSims] = useState([])
     const [categorys, setCategorys] = useState([])
@@ -378,3 +378,5 @@ export default function AdminSims() {
         </div>
     )
 }
+
+export default requireAuth(AdminSims)

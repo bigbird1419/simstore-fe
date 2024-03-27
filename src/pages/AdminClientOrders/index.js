@@ -8,10 +8,11 @@ import { getClientOrders, deleClientOrderById, putClientOrder } from '../../serv
 import Messages from "../../components/Messages"
 import Loader from "../../components/Loader"
 import FormatDate from '../../components/FormatDate'
+import requireAuth from "../../hook/requireAuth"
 
 const cx = classNames.bind(styles)
 
-export default function AdminClientOrders() {
+function AdminClientOrders() {
     const [clientOrders, setClientOrders] = useState([])
     const [totalPage, setTotalPage] = useState(0)
     const [curPage, setCurPage] = useState(1)
@@ -73,7 +74,7 @@ export default function AdminClientOrders() {
                                         <div className="col-6">
                                             <label>
                                                 <select onChange={e => setLimit(e.target.value)}
-                                                    className="p-2 mr-6" value={limit}
+                                                    className="p-2 mr-6 outline-none" value={limit}
                                                 >
                                                     <option value={10}>10</option>
                                                     <option value={25}>25</option>
@@ -82,7 +83,7 @@ export default function AdminClientOrders() {
                                                 </select>
                                             </label>
                                             <label>
-                                                <select onChange={e => setDirection(e.target.value)} value={direction} className="p-2">
+                                                <select onChange={e => setDirection(e.target.value)} value={direction} className="p-2 outline-none">
                                                     <option value={'desc'}>Mới nhất</option>
                                                     <option value={'asc'}>Cũ nhất</option>
                                                 </select>
@@ -187,3 +188,5 @@ export default function AdminClientOrders() {
         </div>
     )
 }
+
+export default requireAuth(AdminClientOrders)

@@ -1,11 +1,25 @@
 import classNames from 'classnames/bind'
+import { signOut } from 'firebase/auth'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import styles from './AdminHeader.module.css'
 import Button from '../../../components/Button'
+import { auth } from '../../../services/firebase'
+import { AuthContext } from '../../../context/AuthContext'
 
 const cx = classNames.bind(styles)
 
 export default function AdminHeader() {
+    const { setIsLogin } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const hanldeSignOut = async () => {
+        await signOut(auth)
+        setIsLogin(false)
+        navigate('/login')
+    }
+
     return (
         <div className="wrapper">
             <div className="container">
@@ -17,8 +31,8 @@ export default function AdminHeader() {
                         <div className='mr-4 text-white text-xl'>
                             <i className="far fa-bell"></i>
                         </div>
-                        <div className={cx('user', 'text-xl  text-white ')}>
-                            Tuan
+                        <div className={cx('user', 'text-xl  text-white ')} onClick={hanldeSignOut}>
+                            Thoát
                             <i className="far fa-user ml-2"></i>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
@@ -7,6 +7,7 @@ import styles from './Login.module.css'
 import Button from '../../components/Button'
 import { auth } from '../../services/firebase'
 import Loader from '../../components/Loader'
+import { AuthContext } from '../../context/AuthContext'
 
 const cx = classNames.bind(styles)
 
@@ -16,6 +17,7 @@ export default function Login() {
     const [isErr, setIsErr] = useState(false)
     const [contentErr, setContentErr] = useState('')
     const [isLoading, setIsLoading] = useState(true)
+    const { setIsLogin } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -37,6 +39,7 @@ export default function Login() {
         try {
             setIsLoading(true)
             await signInWithEmailAndPassword(auth, email, password)
+                .then((data) => setIsLogin(true))
             setIsLoading(false)
             setContentErr('')
             setIsErr(false)
@@ -45,6 +48,7 @@ export default function Login() {
             console.log(error)
             setContentErr('Có lỗi xảy ra, vui lòng thử lại!!!')
             setIsErr(true)
+            setIsLogin(false)
         }
     }
 

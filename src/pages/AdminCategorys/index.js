@@ -1,25 +1,27 @@
 import classNames from "classnames/bind"
-import { useEffect, useState } from "react"
+import { useContext, useState } from "react"
 
 import styles from './AdminCategorys.module.css'
 import Button from '../../components/Button'
-import { getCategorys, delCategoryById, postCategory, putCategory } from '../../services/categoryService'
+import { delCategoryById, postCategory, putCategory } from '../../services/categoryService'
 import Loader from '../../components/Loader'
 import Messages from '../../components/Messages'
 import FormatDate from '../../components/FormatDate'
+import requireAuth from "../../hook/requireAuth"
+import { CategoryContext } from "../../context/CategoryContext"
 
 const cx = classNames.bind(styles)
 
-export default function AdminCategorys() {
+function AdminCategorys() {
     const [isShowCreate, setIsShowCreate] = useState(false)
-    const [categorys, setCategorys] = useState([])
+    const { categorys } = useContext(CategoryContext)
     const [curCategory, setCurCategory] = useState({})
     const [categoryName, setCategoryName] = useState('')
     const [categoryCode, setCategoryCode] = useState('')
     const [categoryDes, setCategoryDes] = useState('')
     const [isShowMessage, setIsShowMessage] = useState(false)
     const [contentMessage, setContentMessage] = useState({})
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleToggleShowCreate = () => {
         setIsShowCreate(val => !val)
@@ -108,15 +110,6 @@ export default function AdminCategorys() {
             setIsShowMessage(true)
         }
     }
-
-    useEffect(() => {
-        const getData = async () => {
-            let res = await getCategorys()
-            setCategorys(res.data)
-            setIsLoading(false)
-        }
-        getData()
-    }, [categorys])
 
     return (
         <div className="wrapper">
@@ -238,3 +231,5 @@ export default function AdminCategorys() {
         </div>
     )
 }
+
+export default requireAuth(AdminCategorys)
