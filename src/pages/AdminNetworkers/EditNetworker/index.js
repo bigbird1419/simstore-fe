@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 
 import { saveNetWorker, createNetWorker, deleNetworkerById } from '../../../services/networkersService'
-import { uploadImg } from '../../../utils/uploadFile'
+import { uploadImg } from '../../../utils/fileStorage'
 import Button from '../../../components/Button'
 import Messages from '../../../components/Messages'
 import routes from '../../../constants/routes'
 
 export default function EditNetworker({ networker = {}, onHidden = () => { } }) {
-    const [networkerName, setNetWorkerName] = useState('')
-    const [networkerCode, setNetWorkerCode] = useState('')
-    const [networkerDescript, setNetWorkerDescript] = useState('')
+    const [networkerName, setNetWorkerName] = useState(networker.name)
+    const [networkerCode, setNetWorkerCode] = useState(networker.code)
+    const [networkerDescript, setNetWorkerDescript] = useState(networker.description)
     const [fileImg, setFileImg] = useState()
     const [isShowMessage, setIsShowMessage] = useState(false)
     const [contentMessage, setContentMessage] = useState({})
@@ -108,12 +108,6 @@ export default function EditNetworker({ networker = {}, onHidden = () => { } }) 
             })
         }
     }
-
-    useEffect(() => {
-        setNetWorkerCode(networker.code)
-        setNetWorkerName(networker.name)
-        setNetWorkerDescript(networker.description)
-    })
 
     return (
         <div className="wrapper">

@@ -7,12 +7,12 @@ export default function AdminLayout({ children }) {
             <div className='container'>
                 <div className="row">
                     <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-                        <div className='mt-4 sticky top-0 z-50'>
+                        <div className=' sticky top-0 z-50'>
                             <AdminSidebar />
                         </div>
                     </div>
                     <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                        <div className='my-4 sticky top-0 z-50'>
+                        <div className=' sticky top-0 z-50'>
                             <AdminHeader />
                         </div>
                         <div className='min-h-screen'>{children}</div>

@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import { delCategoryById, postCategory, putCategory } from '../../../services/categoryService'
 import Messages from "../../../components/Messages"
 import Button from "../../../components/Button"
 import routes from "../../../constants/routes"
 
-export default function EditCategory({ category = {}, onHidden = () => {} }) {
-    const [categoryName, setCategoryName] = useState('')
-    const [categoryCode, setCategoryCode] = useState('')
-    const [categoryDes, setCategoryDes] = useState('')
+export default function EditCategory({ category = {}, onHidden = () => { } }) {
+    const [categoryName, setCategoryName] = useState(category.name)
+    const [categoryCode, setCategoryCode] = useState(category.code)
+    const [categoryDes, setCategoryDes] = useState(category.description)
     const [isShowMessage, setIsShowMessage] = useState(false)
     const [contentMessage, setContentMessage] = useState({})
     const [isLoading, setIsLoading] = useState(false)
@@ -87,12 +87,6 @@ export default function EditCategory({ category = {}, onHidden = () => {} }) {
             setIsShowMessage(true)
         }
     }
-
-    useEffect(() => {
-        setCategoryCode(category?.code)
-        setCategoryDes(category?.description)
-        setCategoryName(category?.name)
-    }, [category])
 
     return (
         <div className="wrapper">

@@ -44,16 +44,16 @@ export default function AdminSidebar() {
                 {sidebars.map((sidebar, i) => (
                     <div key={i} className="border-b border-b-gray-200">
                         <Button
-                            className={cx('block text-md text-white font-bold px-4 py-2 my-1 opacity-100 transition duration-300', 'nav-side')}
+                            className={cx('block text-md text-white font-bold px-3 py-2 my-1 opacity-100 transition duration-300', 'nav-side')}
                             to={sidebar.path}
                         >
                             <span className="flex justify-center items-center w-6 h-6 text-xs mr-3">{sidebar.icon}</span>
                             <span className="text-right">{sidebar.title}</span>
                         </Button>
                         {/* {currentPage.includes(sidebar.path) && */}
-                        <div className="ml-3">
+                        <div className="ml-4">
                             {sidebar.children?.map((sc, i) => (
-                                <Button className={cx('block text-sm text-white font-bold mb-2 px-4 py-2', 'nav-side')} to={sc.path}>
+                                <Button key={i} className={cx('block w-4/5 bg-white rounded-md text-sm text-colorExtraPrimary font-bold mb-2 px-4 py-2', 'nav-side')} to={sc.path}>
                                     <span className="text-right">{sc.title}</span>
                                     <span className="flex justify-center items-center w-6 h-6 mr-3">{sc.icon}</span>
                                 </Button>

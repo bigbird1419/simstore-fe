@@ -1,7 +1,7 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 
 import { delSimById, postSim, putSim } from '../../../services/simService'
-import { uploadImg } from '../../../utils/uploadFile'
+import { uploadImg } from '../../../utils/fileStorage'
 import Button from '../../../components/Button'
 import { CategoryContext } from '../../../context/CategoryContext'
 import { NetworkerContext } from '../../../context/NetworkerContext'
@@ -11,10 +11,10 @@ import routes from '../../../constants/routes'
 export default function EditSim({ sim = {}, onHidden = () => { } }) {
     const { categorys } = useContext(CategoryContext)
     const { networkers } = useContext(NetworkerContext)
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [price, setPrice] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState(sim.phoneNumber)
+    const [price, setPrice] = useState(sim.price)
     const [fileImg, setFileImg] = useState()
-    const [description, setDescription] = useState('')
+    const [description, setDescription] = useState(sim.description)
     const [categoryId, setCategoryId] = useState('')
     const [networkerId, setNetworkerId] = useState('')
     const [isShowMessage, setIsShowMessage] = useState(false)
@@ -42,41 +42,28 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
             }
             setIsLoading(true)
             const imgURL = await uploadImg(phoneNumber, fileImg);
-            console.log({
-                phoneNumber: phoneNumber,
-                description: description,
-                imgUrl: imgURL,
-                price: price,
-                category: {
-                    id: categoryId,
-                },
-                networker: {
-                    id: networkerId
-                },
-                status: true
+            const data = await postSim(
+                {
+                    phoneNumber,
+                    description,
+                    imgUrl: imgURL,
+                    price,
+                    category: {
+                        id: categoryId,
+                    },
+                    networker: {
+                        id: networkerId
+                    },
+                    status: true
+                }
+            )
+            handleClearInfoInput()
+            setIsLoading(false)
+            setIsShowMessage(true)
+            setContentMessage({
+                type: 'success',
+                message: data.message
             })
-            // const data = await postSim(
-            //     {
-            //         phoneNumber,
-            //         description,
-            //         imgUrl: imgURL,
-            //         price,
-            //         category: {
-            //             id: categoryId,
-            //         },
-            //         networker: {
-            //             id: networkerId
-            //         },
-            //         status: true
-            //     }
-            // )
-            // handleClearInfoInput()
-            // setIsLoading(false)
-            // setIsShowMessage(true)
-            // setContentMessage({
-            //     type: 'success',
-            //     message: data.message
-            // })
         } catch (error) {
             console.log(error)
             setContentMessage({
@@ -147,12 +134,6 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
         }
     }
 
-    useEffect(() => {
-        setPhoneNumber(sim.phoneNumber)
-        setPrice(sim.price)
-        setDescription(sim.description)
-    }, [sim])
-
     return (
         <div className="wrapper">
             <div className="row">
@@ -174,7 +155,7 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
                         <select className="w-100 p-2 text-md" id="networker"
                             onChange={(e) => setNetworkerId(e.target.value)}
                         >
-                            <option value="" disabled selected>
+                            <option value="" defaultValue={1} disabled selected>
                                 Chọn nhà mạng
                             </option>
                             {networkers.map((networker) => (
@@ -191,7 +172,7 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
                         <select className="w-100 p-2 text-md" id="networker"
                             onChange={(e) => setCategoryId(e.target.value)}
                         >
-                            <option value="" disabled selected>
+                            <option value="" defaultValue={1} disabled selected>
                                 Chọn danh mục
                             </option>
                             {categorys.map((category) => (
