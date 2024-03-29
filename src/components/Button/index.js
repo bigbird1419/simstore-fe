@@ -15,6 +15,7 @@ export default function Button({
     rounded = false,
     small = false,
     large = false,
+    adminBtn = false,
     children,
     className,
     style,
@@ -44,12 +45,13 @@ export default function Button({
     }
 
     const classes = cx('wrapper', {
-        'bg-colorPrimary rounded-md text-white px-4 py-2': primary,
-        'bg-colorSecondary rounded-md text-white px-4 py-2': secondary,
+        'bg-colorPrimary rounded-md text-white px-4 py-1': primary,
+        'bg-colorSecondary rounded-md text-white px-4 py-1': secondary,
         'text-colorDark text-md': normal,
         'rounded-full': rounded,
         'text-xl': large,
         'text-sm': small,
+        'bg-colorExtraPrimary px-4 py-1 text-white rounded hover:bg-colorSecondary transition-all duration-300': adminBtn,
         [className]: className,
     })
 

@@ -9,6 +9,7 @@ import Messages from "../../components/Messages"
 import Loader from "../../components/Loader"
 import FormatDate from '../../components/FormatDate'
 import requireAuth from "../../hook/requireAuth"
+import { ExportCSV } from "../../common/ExportCSV"
 
 const cx = classNames.bind(styles)
 
@@ -90,7 +91,9 @@ function AdminClientOrders() {
                                             </label>
                                         </div>
                                         <div className="col-6">
-                                            <div className="text-right"><Button primary>Xuất PDF</Button></div>
+                                            <div className="text-right">
+                                                <ExportCSV csvData={clientOrders} fileName={'DonHang'}/>
+                                            </div>
                                         </div>
                                     </div>
 

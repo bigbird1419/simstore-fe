@@ -58,7 +58,7 @@ function AdminHome() {
                 </div>
                 <div className='row'>
                     <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12'>
-                        <div className='my-4 w-full'>
+                        <div className='my-6 w-full'>
                             <h1 className='text-left font-bold text-xl mb-4'>Tổng quan số đơn hàng</h1>
                             <LineChart data={dataOrder} width={400} height={320}>
                                 <CartesianGrid strokeDasharray="3 3" />
