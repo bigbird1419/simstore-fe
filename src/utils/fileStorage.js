@@ -2,9 +2,9 @@ import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebas
 
 import { storage } from '../services/firebase'
 
-export const uploadImg = async (networkerName, fileImg) => {
+export const uploadImg = async (name, fileImg) => {
     try {
-        const storageref = ref(storage, `images/${networkerName}`)
+        const storageref = ref(storage, `images/${name}`)
         const uploadTask = uploadBytesResumable(storageref, fileImg)
         const snapshot = await uploadTask
         const downloadURL = await getDownloadURL(snapshot.ref)
@@ -16,15 +16,14 @@ export const uploadImg = async (networkerName, fileImg) => {
 
 export const deleteImg = async (imgUrl) => {
     try {
-        const desertRef = ref(storage, `images/${imgUrl}`);
+        const desertRef = ref(storage, imgUrl);
 
-        // Delete the file
         deleteObject(desertRef).then(() => {
-            // File deleted successfully
+            console.log('Ok')
         }).catch((error) => {
-            // Uh-oh, an error occurred!
+            console.log(error)
         });
     } catch (error) {
-
+        console.log(error)
     }
 }

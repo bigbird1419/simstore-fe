@@ -39,20 +39,20 @@ function Pagination({ totalPage, curPage, setCurPage = () => { } }) {
                 {pages.length > 0 &&
                     <div className="mt-6 flex justify-end">
                         <Button normal onClick={() => handlePrevPage()}
-                            className={cx('block text-md px-4 py-2 m-2', curPage === 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
+                            className={cx('block text-md px-4 py-1 m-2', curPage === 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
                         >
                             <i className="fa-solid fa-angle-left"></i>
                         </Button>
 
                         {pages.map((page) => (
                             <Button key={page} normal onClick={() => handleSetCurPage(page)}
-                                className={cx('block text-md px-4 py-2 m-2', page === curPage ? 'bg-colorPrimary text-white' : 'border border-2 border-cyan-400')}
+                                className={cx('block text-md px-4 py-1 m-2', page === curPage ? 'bg-colorPrimary text-white' : 'border border-2 border-cyan-400')}
                             >
                                 {page}
                             </Button>
                         ))}
                         <Button normal onClick={() => handleNextPage()}
-                            className={cx('block text-md px-4 py-2 m-2', curPage === totalPage - 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
+                            className={cx('block text-md px-4 py-1 m-2', curPage === totalPage - 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
                         >
                             <i className="fa-solid fa-angle-right"></i>
                         </Button>

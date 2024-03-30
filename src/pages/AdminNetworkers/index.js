@@ -3,7 +3,6 @@ import { useContext, useState } from "react"
 
 import styles from './AdminNetworkers.module.css'
 import Button from '../../components/Button'
-import { deleNetworkerById } from '../../services/networkersService'
 import FormatDate from '../../components/FormatDate'
 import requireAuth from "../../hook/requireAuth"
 import { NetworkerContext } from '../../context/NetworkerContext'
@@ -13,7 +12,7 @@ const cx = classNames.bind(styles)
 
 function AdminNetworkers() {
     const [isShowCreate, setIsShowCreate] = useState(false)
-    const { networkers } = useContext(NetworkerContext)
+    const { networkers, deleteData } = useContext(NetworkerContext)
     const [curNetworker, setCurNetworker] = useState({})
 
     const handleHiddenEdit = () => {
@@ -83,7 +82,7 @@ function AdminNetworkers() {
                                                     </Button>
                                                     <Button
                                                         className={cx('hover:opacity-80 text-xs')}
-                                                        onClick={async () => await deleNetworkerById(networker.id)}
+                                                        onClick={async () => await deleteData(networker.id)}
                                                     >
                                                         <i className="fas fa-times mr-2"></i> Xóa
                                                     </Button>

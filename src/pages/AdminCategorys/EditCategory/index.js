@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 
-import { delCategoryById, postCategory, putCategory } from '../../../services/categoryService'
 import Messages from "../../../components/Messages"
 import Button from "../../../components/Button"
 import routes from "../../../constants/routes"
+import { CategoryContext } from "../../../context/CategoryContext"
 
 export default function EditCategory({ category = {}, onHidden = () => { } }) {
+    const { postData, putData, deleteData } = useContext(CategoryContext)
     const [categoryName, setCategoryName] = useState(category.name)
     const [categoryCode, setCategoryCode] = useState(category.code)
     const [categoryDes, setCategoryDes] = useState(category.description)
@@ -22,7 +23,7 @@ export default function EditCategory({ category = {}, onHidden = () => { } }) {
     const hanldePostCategory = async () => {
         try {
             setIsLoading(true)
-            const data = await postCategory({
+            const data = await postData({
                 name: categoryName,
                 code: categoryCode,
                 description: categoryDes
@@ -46,7 +47,7 @@ export default function EditCategory({ category = {}, onHidden = () => { } }) {
     const hanldePutCategory = async () => {
         try {
             setIsLoading(true)
-            const data = await putCategory(category.id, {
+            const data = await putData(category.id, {
                 name: categoryName,
                 code: categoryCode,
                 description: categoryDes
@@ -70,7 +71,7 @@ export default function EditCategory({ category = {}, onHidden = () => { } }) {
     const handleDelCategory = async () => {
         try {
             setIsLoading(true)
-            const data = await delCategoryById(category.id)
+            const data = await deleteData(category.id)
             setContentMessage({
                 type: data.status === 'Ok' ? 'success' : 'error',
                 message: data.message

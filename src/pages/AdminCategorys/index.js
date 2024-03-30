@@ -3,7 +3,6 @@ import { useContext, useState } from "react"
 
 import styles from './AdminCategorys.module.css'
 import Button from '../../components/Button'
-import { delCategoryById } from '../../services/categoryService'
 import FormatDate from '../../components/FormatDate'
 import requireAuth from "../../hook/requireAuth"
 import { CategoryContext } from "../../context/CategoryContext"
@@ -13,7 +12,7 @@ const cx = classNames.bind(styles)
 
 function AdminCategorys() {
     const [isShowCreate, setIsShowCreate] = useState(false)
-    const { categorys } = useContext(CategoryContext)
+    const { categorys, deleteData } = useContext(CategoryContext)
     const [curCategory, setCurCategory] = useState({})
 
     const handleHiddenEdit = () => {
@@ -73,7 +72,7 @@ function AdminCategorys() {
                                                             <i className="far fa-edit mr-2"></i> Sửa
                                                         </Button>
                                                         <Button className={cx('hover:opacity-80 text-xs')}
-                                                            onClick={async () => await delCategoryById(category.id)}
+                                                            onClick={async () => await deleteData(category.id)}
                                                         >
                                                             <i className="fas fa-times mr-2"></i> Xóa
                                                         </Button>

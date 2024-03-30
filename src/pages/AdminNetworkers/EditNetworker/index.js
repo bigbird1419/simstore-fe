@@ -1,12 +1,13 @@
-import {  useState } from 'react'
+import { useContext, useState } from 'react'
 
-import { saveNetWorker, createNetWorker, deleNetworkerById } from '../../../services/networkersService'
-import { uploadImg } from '../../../utils/fileStorage'
+import { uploadImg, deleteImg } from '../../../utils/fileStorage'
 import Button from '../../../components/Button'
 import Messages from '../../../components/Messages'
 import routes from '../../../constants/routes'
+import { NetworkerContext } from '../../../context/NetworkerContext'
 
 export default function EditNetworker({ networker = {}, onHidden = () => { } }) {
+    const { postData, putData, deleteData } = useContext(NetworkerContext)
     const [networkerName, setNetWorkerName] = useState(networker.name)
     const [networkerCode, setNetWorkerCode] = useState(networker.code)
     const [networkerDescript, setNetWorkerDescript] = useState(networker.description)
@@ -27,33 +28,6 @@ export default function EditNetworker({ networker = {}, onHidden = () => { } }) 
         setIsShowMessage(false)
     }
 
-    const handleSaveNetworker = async () => {
-        try {
-            setIsLoading(true)
-            const imgURL = await uploadImg(networkerName, fileImg) || networker.imgURL
-            const data = await saveNetWorker(networker.id,
-                {
-                    name: networkerName,
-                    description: networkerDescript,
-                    imgUrl: imgURL,
-                    code: networkerCode
-                }
-            )
-            handleClearInfoInput()
-            setIsLoading(false)
-            setIsShowMessage(true)
-            setContentMessage({
-                type: 'success',
-                message: data.message
-            })
-        } catch (error) {
-            console.log(error)
-            setContentMessage({
-                type: 'error',
-                message: 'Có lỗi xảy ra, vui lòng thử lại!!!'
-            })
-        }
-    }
     const hanldeCreateNetworker = async () => {
         try {
             if (networkerName === '' || networkerDescript === '' || networkerCode === '') {
@@ -66,7 +40,7 @@ export default function EditNetworker({ networker = {}, onHidden = () => { } }) 
             }
             setIsLoading(true)
             const imgURL = await uploadImg(networkerName, fileImg);
-            const data = await createNetWorker(
+            const data = await postData(
                 {
                     name: networkerName,
                     description: networkerDescript,
@@ -89,10 +63,40 @@ export default function EditNetworker({ networker = {}, onHidden = () => { } }) 
             })
         }
     }
-    const handleDeleteNetworkers = async () => {
+    const hanldeUpdateNetworker = async () => {
         try {
             setIsLoading(true)
-            const data = await deleNetworkerById(networker.id)
+            let imgURL = ''
+            if (!fileImg) imgURL = networker.imgURL
+            else imgURL = await uploadImg(networkerName, fileImg)
+            const data = await putData(networker.id,
+                {
+                    name: networkerName,
+                    description: networkerDescript,
+                    imgUrl: imgURL,
+                    code: networkerCode
+                }
+            )
+            handleClearInfoInput()
+            setIsLoading(false)
+            setIsShowMessage(true)
+            setContentMessage({
+                type: 'success',
+                message: data.message
+            })
+        } catch (error) {
+            console.log(error)
+            setContentMessage({
+                type: 'error',
+                message: 'Có lỗi xảy ra, vui lòng thử lại!!!'
+            })
+        }
+    }
+    const handleDeleteNetworkersById = async () => {
+        try {
+            setIsLoading(true)
+            const data = await deleteData(networker.id)
+            await deleteImg(networker.imgUrl)
             handleClearInfoInput()
             setIsLoading(false)
             setIsShowMessage(true)
@@ -148,10 +152,10 @@ export default function EditNetworker({ networker = {}, onHidden = () => { } }) 
                             onClick={hanldeCreateNetworker}
                         >Thêm</Button>
                         <Button adminBtn
-                            onClick={handleSaveNetworker}
+                            onClick={hanldeUpdateNetworker}
                         >Sửa</Button>
                         <Button adminBtn
-                            onClick={handleDeleteNetworkers}
+                            onClick={handleDeleteNetworkersById}
                         >Xóa</Button>
                         <Button adminBtn
                             onClick={onHidden} to={routes.adminNetworker}

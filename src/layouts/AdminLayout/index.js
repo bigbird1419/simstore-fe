@@ -15,7 +15,7 @@ export default function AdminLayout({ children }) {
                         <div className=' sticky top-0 z-50'>
                             <AdminHeader />
                         </div>
-                        <div className='min-h-screen'>{children}</div>
+                        <div className='min-h-screen mt-4'>{children}</div>
                     </div>
                 </div>
             </div>

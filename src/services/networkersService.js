@@ -19,7 +19,7 @@ export const getNetworkerById = async (id) => {
     }
 }
 
-export const createNetWorker = async (data) => {
+export const postNetWorker = async (data) => {
     try {
         const res = await axios.post('http://localhost:8088/api/v1/networkers', data)
         return res.data
@@ -27,7 +27,7 @@ export const createNetWorker = async (data) => {
         console.log(error)
     }
 }
-export const saveNetWorker = async (id, data) => {
+export const putNetWorker = async (id, data) => {
     try {
         const res = await axios.put(`http://localhost:8088/api/v1/networkers/${id}`, data)
         return res.data

@@ -21,6 +21,11 @@ function AdminSims() {
     const [valSearch, setValSearch] = useState('')
     const [query, setQuery] = useState('')
 
+    const getData = async (query, curPage, limit) => {
+        const res = await getSims(query, curPage, limit)
+        setSims(res.data)
+        setTotalPage(res.totalPage)
+    }
     const handleHiddenEdit = () => {
         setIsShowCreate(false)
     }
@@ -33,15 +38,13 @@ function AdminSims() {
         setValSearch('')
     }
 
-
+    const hanldeDeleteSimById = async (id) => {
+        await delSimById(id)
+        await getData(query, curPage, limit)
+    }
 
     useEffect(() => {
-        const getData = async () => {
-            const res = await getSims(query, curPage, limit)
-            setSims(res.data)
-            setTotalPage(res.totalPage)
-        }
-        getData()
+        getData(query, curPage, limit)
     }, [totalPage, curPage, limit, query])
 
     return (
@@ -59,16 +62,16 @@ function AdminSims() {
                                             <div className="col-6">
                                                 <div className="relative">
                                                     <input onChange={e => setValSearch(e.target.value)} value={valSearch} onKeyDown={e => setValSearch(e.target.value)} type="text" placeholder="Nhập sim cần tìm"
-                                                        className="px-4 py-2 text-md outline-none w-full border-colorPrimary border-1 rounded-md"
+                                                        className="px-4 py-2 text-md outline-none w-full border-colorExtraPrimary border-1 rounded-md"
                                                     />
-                                                    <Button className={cx('absolute right-0 top-1/2 translate-y-[-50%] bg-colorPrimary block text-white px-3 py-1 mr-2 rounded-sm')} onClick={hanldeSearch} >
+                                                    <Button className={cx('absolute right-0 top-1/2 translate-y-[-50%] bg-colorExtraPrimary block text-white px-3 py-1 mr-2 rounded-sm')} onClick={hanldeSearch} >
                                                         Tìm
                                                     </Button>
                                                 </div>
                                             </div>
                                             <div className="col-6 flex justify-end">
                                                 <select onChange={e => setLimit(e.target.value)}
-                                                    className="p-2 mr-10 shadow-md" value={limit}
+                                                    className="p-2 mr-10 shadow-md outline-none" value={limit}
                                                 >
                                                     <option value={10}>10</option>
                                                     <option value={25}>25</option>
@@ -133,7 +136,7 @@ function AdminSims() {
                                                         </Button>
                                                         <Button
                                                             className={cx(' text-xs hover:opacity-80')}
-                                                            onClick={async () => { await delSimById(sim.id) }}
+                                                            onClick={() => hanldeDeleteSimById(sim.id)}
                                                         >
                                                             <i className="fas fa-times mr-2"></i> Xóa
                                                         </Button>

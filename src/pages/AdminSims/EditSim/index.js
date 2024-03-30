@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 
 import { delSimById, postSim, putSim } from '../../../services/simService'
-import { uploadImg } from '../../../utils/fileStorage'
+import { uploadImg, deleteImg } from '../../../utils/fileStorage'
 import Button from '../../../components/Button'
 import { CategoryContext } from '../../../context/CategoryContext'
 import { NetworkerContext } from '../../../context/NetworkerContext'
@@ -83,7 +83,9 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
                 return
             }
             setIsLoading(true)
-            const imgURL = await uploadImg(phoneNumber, fileImg) || sim.imgURL;
+            let imgURL = ''
+            if (!fileImg) imgURL = sim.imgURL
+            else imgURL = await uploadImg(phoneNumber, fileImg)
             const data = await putSim(sim.id,
                 {
                     phoneNumber,
@@ -118,6 +120,7 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
         try {
             setIsLoading(true)
             const data = await delSimById(sim.id)
+            await deleteImg(sim.imgURL)
             handleClearInfoInput()
             setIsLoading(false)
             setIsShowMessage(true)

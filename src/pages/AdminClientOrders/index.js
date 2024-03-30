@@ -23,6 +23,13 @@ function AdminClientOrders() {
     const [contentMessage, setContentMessage] = useState({})
     const [isLoading, setIsLoading] = useState(false)
 
+    const getData = async (curPage, limit, direction) => {
+        setIsLoading(true)
+        const res = await getClientOrders('', curPage, limit, 'createdDate', direction)
+        setClientOrders(res.data)
+        setTotalPage(res.totalPage)
+        setIsLoading(false)
+    }
     const hanldeChangeStatus = (e, index) => {
         const updatedClientOrders = [...clientOrders];
         updatedClientOrders[index].status = e.target.value;
@@ -31,6 +38,7 @@ function AdminClientOrders() {
     const handleHiddenMessage = () => {
         setIsShowMessage(false)
     }
+    
     const handleEditClientOrder = async (i) => {
         try {
             const clientOrder = clientOrders[i]
@@ -51,16 +59,13 @@ function AdminClientOrders() {
             })
         }
     }
+    const hanldeDeleteOrderById = async (id) => {
+        await deleClientOrderById(id)
+        await getData(curPage, limit, direction)
+    }
 
     useEffect(() => {
-        const getData = async () => {
-            setIsLoading(true)
-            const res = await getClientOrders('', curPage, limit, 'createdDate', direction)
-            setClientOrders(res.data)
-            setTotalPage(res.totalPage)
-            setIsLoading(false)
-        }
-        getData()
+        getData(curPage, limit, direction)
     }, [curPage, limit, direction])
 
     return (
@@ -162,7 +167,7 @@ function AdminClientOrders() {
                                                         </Button>
                                                         <Button
                                                             className={cx(' text-xs hover:opacity-80')}
-                                                            onClick={async () => await deleClientOrderById(clientOrder.id)}
+                                                            onClick={() => hanldeDeleteOrderById(clientOrder.id)}
                                                         >
                                                             <i className="fas fa-times mr-2"></i> Xóa
                                                         </Button>
