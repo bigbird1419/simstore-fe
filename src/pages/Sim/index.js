@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import { getSims } from '../../services/simService'
 import Loader from '../../components/Loader'
 import Button from "../../components/Button"
 import Messages from '../../components/Messages'
-import { postClientOrder } from '../../services/clientOrderService'
+import { ClientOrderContext } from '../../context/ClientOrderContext'
 
 export default function Sim() {
     const { phoneNumber } = useParams()
+    const { postData } = useContext(ClientOrderContext)
     const [sim, setSim] = useState([])
     const [clientName, setClientName] = useState('')
     const [address, setAddress] = useState('')
@@ -43,7 +44,7 @@ export default function Sim() {
         }
         try {
             setIsLoading(true)
-            const res = await postClientOrder({
+            const res = await postData({
                 clientName: clientName,
                 address: address,
                 phone: phone,
@@ -90,15 +91,15 @@ export default function Sim() {
                             sim.map(sim => (
                                 <div className="row" key={sim.phoneNumber}>
                                     <div className="col-7">
-                                        <div className="p-2 border h-full p-4">
-                                            <h3 className="mb-1">Số sim: <Button to={`/sim/${sim.phoneNumber}`} className="text-2xl text-colorSecondary font-bold hover:text-colorPrimary duration-300 transition-all">{sim.phoneNumber}</Button></h3>
-                                            <h3 className="mb-1">Giá bán: <span className="text-md text-colorSecondary">{sim.price}<sub className="text-black text-xs text-bold">(VNĐ)</sub></span></h3>
-                                            <h3 className="mb-1">Mạng: <Button to={`/${sim.networker.code}`} className="uppercase text-xl text-colorPrimary hover:underline">{sim.networker?.name}</Button></h3>
-                                            <p className="">{sim.description}</p>
+                                        <div className="p-2 border h-full md:p-4 max-sm:p-1">
+                                            <h3 className="mb-1">Số sim: <Button to={`/sim/${sim.phoneNumber}`} className="md:text-2xl max-sm:text-md text-colorSecondary font-bold hover:text-colorPrimary duration-300 transition-all">{sim.phoneNumber}</Button></h3>
+                                            <h3 className="mb-1">Giá bán: <span className="text-md text-colorSecondary max-sm:text-sm">{sim.price}<sub className="text-black text-xs text-bold">(VNĐ)</sub></span></h3>
+                                            <h3 className="mb-1">Mạng: <Button to={`/${sim.networker.code}`} className="uppercase md:text-xl text-colorPrimary hover:underline max-sm:text-sm">{sim.networker?.name}</Button></h3>
+                                            <p className="max-sm:text-sm">{sim.description}</p>
                                         </div>
                                     </div>
                                     <div className="col-5">
-                                        <div className="relative border h-full p-4">
+                                        <div className="relative border h-full md:p-4 max-sm:p-1 ">
                                             <img src={sim.imgUrl} alt={sim.phoneNumber} />
                                             <p className="absolute text-xs font-semibold top-1/2 left-1/2 translate-y-[-100%]">{sim.phoneNumber}</p>
                                         </div>
@@ -107,7 +108,7 @@ export default function Sim() {
                             ))
                         }
                         {sim?.length === 1 &&
-                            <div>
+                            <div className="max-sm:mt-2">
                                 <div className="form-box">
                                     <h1 className="py-2 bg-colorPrimary text-md font-bold text-white text-center">Đặt mua sim</h1>
                                     <form className="p-4 bg-colorThinPrimary">

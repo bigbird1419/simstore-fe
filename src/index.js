@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from "./context/AuthContext";
 import { NetworkerProvider } from './context/NetworkerContext'
 import { CategoryProvider } from './context/CategoryContext'
+import { ClientOrderProvider } from './context/ClientOrderContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <AuthProvider>
       <NetworkerProvider>
         <CategoryProvider>
-          <App />
+          <ClientOrderProvider>
+            <App />
+          </ClientOrderProvider>
         </CategoryProvider>
       </NetworkerProvider>
     </AuthProvider>

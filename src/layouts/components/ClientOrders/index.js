@@ -1,22 +1,14 @@
 import classNames from "classnames/bind"
+import { useContext } from "react"
 
 import styles from './ClientOrder.module.css'
 import ClientOrderItems from "./ClientOrderItem"
-import { getClientOrders } from '../../../services/clientOrderService'
-import { useEffect, useState } from "react"
+import { ClientOrderContext } from '../../../context/ClientOrderContext'
 
 const cx = classNames.bind(styles)
 
 export default function ClientOrder() {
-    const [clientOrders, setClientOrders] = useState([])
-
-    useEffect(() => {
-        const getData = async () => {
-            const res = await getClientOrders('', 1, 10, 'createdDate', 'desc')
-            setClientOrders(res.data)
-        }
-        getData()
-    }, [])
+    const { clientOrders } = useContext(ClientOrderContext)
 
     return (
         <div className="wrapper">
@@ -25,11 +17,14 @@ export default function ClientOrder() {
                     <h1 className="px-4 py-2 bg-colorPrimary text-md font-bold text-white text-center">
                         ĐƠN HÀNG MỚI
                     </h1>
-                    <div>
-                        {clientOrders.map((order, i) => (
-                            <ClientOrderItems className={cx('')} data={order} key={i} />
-                        ))}
-                    </div>
+                    {clientOrders?.length > 0 ?
+                        <div>
+                            {clientOrders?.map((order, i) => (
+                                <ClientOrderItems className={cx('')} data={order} key={i} />
+                            ))}
+                        </div> :
+                        <p>Chưa có đơn hàng mới</p>
+                    }
                 </div>
             </div>
         </div>
