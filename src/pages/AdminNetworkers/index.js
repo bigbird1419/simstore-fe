@@ -31,7 +31,7 @@ function AdminNetworkers() {
                         <EditNetworker networker={curNetworker} onHidden={handleHiddenEdit} />
                         :
                         <div>
-                            {networkers.length > 0 &&
+                            {networkers?.length > 0 &&
                             <div className="">
                                 <table className="w-100 bg-white table table-striped table-hover nowrap mt-4 rouded p-2">
                                     <thead>

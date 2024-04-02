@@ -86,7 +86,7 @@ export default function Sim() {
             <div className="container">
                 {isLoading ? <Loader /> :
                     <div className="my-4">
-                        {sim.length > 0 &&
+                        {sim?.length > 0 &&
                             sim.map(sim => (
                                 <div className="row" key={sim.phoneNumber}>
                                     <div className="col-7">
@@ -106,7 +106,7 @@ export default function Sim() {
                                 </div>
                             ))
                         }
-                        {sim.length === 1 &&
+                        {sim?.length === 1 &&
                             <div>
                                 <div className="form-box">
                                     <h1 className="py-2 bg-colorPrimary text-md font-bold text-white text-center">Đặt mua sim</h1>
@@ -170,7 +170,7 @@ export default function Sim() {
                                 }
                             </div>
                         }
-                        {sim.length < 0 && <h1 className="text-center text-xl font-bold text-colorSecondary">Sim không tồn tại</h1>}
+                        {sim?.length < 0 && <h1 className="text-center text-xl font-bold text-colorSecondary">Sim không tồn tại</h1>}
                     </div>
                 }
             </div>

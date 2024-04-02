@@ -16,8 +16,8 @@ export default function Header() {
                 </div>
                 <div>
                     <NavMenu
-                        className={cx('flex bg-colorPrimary mt-2')} content={category}
-                        classNameItem={cx('px-4 py-2 text-white text-md font-semibold uppercase hover:bg-colorSecondary transition-all duration-300')}
+                        className={cx('flex bg-colorPrimary mt-2 max-sm:overflow-y-auto')} content={category}
+                        classNameItem={cx('md:px-4 md:py-2 text-white text-md font-semibold uppercase hover:bg-colorSecondary transition-all duration-300 max-sm:text-xs max-sm:px-2 max-sm:py-1 max-sm:whitespace-nowrap')}
                         activeClass={cx('bg-colorSecondary')}
                     />
                 </div>

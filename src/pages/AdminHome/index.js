@@ -37,12 +37,12 @@ function AdminHome() {
                 <div className='row'>
                     <div className='col-xl-3 col-lg-3 col-md-6 col-sm-12'>
                         <div className=''>
-                            <Card heading={'Nhà mạng'} count={networkers.length} primary />
+                            <Card heading={'Nhà mạng'} count={networkers?.length} primary />
                         </div>
                     </div>
                     <div className='col-xl-3 col-lg-3 col-md-6 col-sm-12'>
                         <div className=''>
-                            <Card heading={'Danh mục'} count={categorys.length} secondary />
+                            <Card heading={'Danh mục'} count={categorys?.length} secondary />
                         </div>
                     </div>
                     <div className='col-xl-3 col-lg-3 col-md-6 col-sm-12'>

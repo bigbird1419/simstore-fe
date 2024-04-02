@@ -44,9 +44,9 @@ export default function SideSimBar() {
                     </h1>
                     <div>
                         <NavMenu
-                            className={cx('')}
+                            className={cx('max-sm:flex max-sm:overflow-y-auto')}
                             content={data}
-                            classNameItem={cx('px-4 py-2 hover:underline text-sm font-semibold text-colorDark border-b border-b-gray-300 w-100')}
+                            classNameItem={cx('md:px-4 md:py-2 hover:underline text-sm font-semibold text-colorDark border-b border-b-gray-300 w-100 max-sm:whitespace-nowrap max-sm:text-xs max-sm:px-2 max-sm:py-1 max-sm:mr-2')}
                             activeClass={cx('underline')}
                         />
                     </div>

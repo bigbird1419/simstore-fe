@@ -47,7 +47,7 @@ function Sims({ query, category = '' }) {
                                 </div>
                             </div>
                         </div>
-                        {sims.length > 0 ?
+                        {sims?.length > 0 ?
                             <div className="row">
                                 {sims.map((sim) => (
                                     <div className="col-6" key={sim.id}>

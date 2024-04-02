@@ -78,7 +78,7 @@ export default function Blogs() {
         <div className="wrapper">
             {isLoading ? <Loader /> :
                 <div className="container">
-                    {Object.keys(curBlog).length > 0 ?
+                    {Object.keys(curBlog)?.length > 0 ?
                         <div className="my-6">
                             <p onClick={hanldeClearBlog} className="text-colorPrimary font-semibold hover:underline">Tin tức</p>
                             <h1 className="px-4 py-2  mt-4 bg-colorPrimary text-md font-bold text-white text-center">

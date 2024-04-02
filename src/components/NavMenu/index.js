@@ -10,7 +10,7 @@ export default function NavMenu({ content, className, classNameItem, activeClass
     const currentPage = useLocation().pathname
 
     return (
-        <div className="wrapper">
+        <div className="wrapper navmenu">
             <div className={cx('', className)}>
                 {content.map((nav, i) => (
                     <MenuItem

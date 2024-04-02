@@ -55,32 +55,32 @@ function AdminSims() {
                         <EditSim sim={curSim} onHidden={handleHiddenEdit} />
                         :
                         <div>
-                            {sims.length > 0 &&
-                                <div className="">
-                                    <div className="my-4 p-2">
-                                        <div className="row">
-                                            <div className="col-6">
-                                                <div className="relative">
-                                                    <input onChange={e => setValSearch(e.target.value)} value={valSearch} onKeyDown={e => setValSearch(e.target.value)} type="text" placeholder="Nhập sim cần tìm"
-                                                        className="px-4 py-2 text-md outline-none w-full border-colorExtraPrimary border-1 rounded-md"
-                                                    />
-                                                    <Button className={cx('absolute right-0 top-1/2 translate-y-[-50%] bg-colorExtraPrimary block text-white px-3 py-1 mr-2 rounded-sm')} onClick={hanldeSearch} >
-                                                        Tìm
-                                                    </Button>
-                                                </div>
-                                            </div>
-                                            <div className="col-6 flex justify-end">
-                                                <select onChange={e => setLimit(e.target.value)}
-                                                    className="p-2 mr-10 shadow-md outline-none" value={limit}
-                                                >
-                                                    <option value={10}>10</option>
-                                                    <option value={25}>25</option>
-                                                    <option value={50}>50</option>
-                                                    <option value={100}>100</option>
-                                                </select>
-                                            </div>
+                            <div className="my-4 p-2">
+                                <div className="row">
+                                    <div className="col-6">
+                                        <div className="relative">
+                                            <input onChange={e => setValSearch(e.target.value)} value={valSearch} onKeyDown={e => setValSearch(e.target.value)} type="text" placeholder="Nhập sim cần tìm"
+                                                className="px-4 py-2 text-md outline-none w-full border-colorExtraPrimary border-1 rounded-md"
+                                            />
+                                            <Button className={cx('absolute right-0 top-1/2 translate-y-[-50%] bg-colorExtraPrimary block text-white px-3 py-1 mr-2 rounded-sm')} onClick={hanldeSearch} >
+                                                Tìm
+                                            </Button>
                                         </div>
                                     </div>
+                                    <div className="col-6 flex justify-end">
+                                        <select onChange={e => setLimit(e.target.value)}
+                                            className="p-2 mr-10 shadow-md outline-none" value={limit}
+                                        >
+                                            <option value={10}>10</option>
+                                            <option value={25}>25</option>
+                                            <option value={50}>50</option>
+                                            <option value={100}>100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            {sims?.length > 0 &&
+                                <div className="">
                                     <table className="w-100 bg-white table table-striped table-hover nowrap mt-4 rouded p-2">
                                         <thead>
                                             <tr>

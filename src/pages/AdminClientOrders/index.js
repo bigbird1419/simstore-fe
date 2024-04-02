@@ -73,7 +73,7 @@ function AdminClientOrders() {
             {isLoading ? <Loader /> :
                 <div className="container">
                     <div>
-                        {clientOrders.length > 0 &&
+                        {clientOrders?.length > 0 &&
                             <div className="">
                                 <div className="my-4 p-2">
                                     <div className="row">

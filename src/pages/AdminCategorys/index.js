@@ -32,7 +32,7 @@ function AdminCategorys() {
                             <EditCategory category={curCategory} onHidden={handleHiddenEdit} />
                         </div> :
                         <div>
-                            {categorys.length > 0 &&
+                            {categorys?.length > 0 &&
                                 <div className="">
                                     <table className="w-100 bg-white table table-striped table-hover nowrap mt-4 rouded p-2">
                                         <thead>
