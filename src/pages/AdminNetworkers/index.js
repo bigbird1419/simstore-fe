@@ -57,7 +57,7 @@ function AdminNetworkers() {
                                         </tr>
                                     </thead>
                                     <tbody className="">
-                                        {networkers.map((networker, i) => (
+                                        {networkers?.map((networker, i) => (
                                             <tr key={i} >
                                                 <td>
                                                     <span className="text-xs">{networker.name}</span>

@@ -25,7 +25,7 @@ export default function Home() {
                     <h1 className="text-center text-lg font-semibold text-white bg-colorPrimary py-1">Sim phổ biến</h1>
                     <Sims />
                 </div>
-                {networkers.map(networker => (
+                {networkers?.map(networker => (
                     <div className={cx('sim-box', 'mb-4')} key={networker.id}>
                         <h1 className="text-center text-lg font-semibold text-white bg-colorPrimary py-1">Sim {networker.name}</h1>
                         <Sims category={networker.code} />

@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { NumericFormat } from 'react-number-format'
 
 import { getSims } from '../../services/simService'
 import Loader from '../../components/Loader'
@@ -87,13 +88,14 @@ export default function Sim() {
             <div className="container">
                 {isLoading ? <Loader /> :
                     <div className="my-4">
+                        {sim?.length === 1 && <h3 className="font-bold">Bán sim {sim[0].phoneNumber} Giá rẻ</h3>}
                         {sim?.length > 0 &&
-                            sim.map(sim => (
+                            sim?.map(sim => (
                                 <div className="row" key={sim.phoneNumber}>
                                     <div className="col-7">
                                         <div className="p-2 border h-full md:p-4 max-sm:p-1">
                                             <h3 className="mb-1">Số sim: <Button to={`/sim/${sim.phoneNumber}`} className="md:text-2xl max-sm:text-md text-colorSecondary font-bold hover:text-colorPrimary duration-300 transition-all">{sim.phoneNumber}</Button></h3>
-                                            <h3 className="mb-1">Giá bán: <span className="text-md text-colorSecondary max-sm:text-sm">{sim.price}<sub className="text-black text-xs text-bold">(VNĐ)</sub></span></h3>
+                                            <h3 className="mb-1">Giá bán: <span className="text-md text-colorSecondary max-sm:text-sm"><NumericFormat value={sim.price} displayType={'text'} thousandSeparator={true} suffix={'(VNĐ)'} /></span></h3>
                                             <h3 className="mb-1">Mạng: <Button to={`/${sim.networker.code}`} className="uppercase md:text-xl text-colorPrimary hover:underline max-sm:text-sm">{sim.networker?.name}</Button></h3>
                                             <p className="max-sm:text-sm">{sim.description}</p>
                                         </div>

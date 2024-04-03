@@ -1,4 +1,5 @@
 import classNames from "classnames/bind"
+import { NumericFormat } from 'react-number-format'
 
 import styles from './Sim.module.css'
 import Button from "../Button"
@@ -16,7 +17,9 @@ export default function Sim({ sim }) {
                 <img className="w-10 max-sm:w-8" src={sim.networker.imgUrl} alt={sim.phoneNumber} />
                 <div className="flex flex-col  justify-between">
                     <p className="flex justify-end text-xl text-colorPrimary font-bold transition-all duration-300 hover:underline max-sm:text-sm">{sim.phoneNumber}</p>
-                    <p className="flex justify-end items-end text-md text-colorSecondary  transition-all duration-300 hover:underline max-sm:text-sm">{sim.price}<sup>₫</sup></p>
+                    <p className="flex justify-end items-end text-md text-colorSecondary  transition-all duration-300 hover:underline max-sm:text-sm">
+                        <NumericFormat value={sim.price} displayType={'text'} thousandSeparator={true} suffix={' đ'} />
+                    </p>
                 </div>
             </div>
         </Button>

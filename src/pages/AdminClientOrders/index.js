@@ -133,7 +133,7 @@ function AdminClientOrders() {
                                         </tr>
                                     </thead>
                                     <tbody className="">
-                                        {clientOrders.map((clientOrder, i) => {
+                                        {clientOrders?.map((clientOrder, i) => {
                                             return (
                                                 <tr key={clientOrder.id}>
                                                     <td>
@@ -185,6 +185,9 @@ function AdminClientOrders() {
                                     />
                                 }
                             </div>
+                        }
+                        {clientOrders?.length === 0 &&
+                            <h3 className="text-center colorExtraPrimary my-6">Chưa có đơn hàng mới</h3>
                         }
                     </div>
                     {isShowMessage &&

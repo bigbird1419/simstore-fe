@@ -9,7 +9,6 @@ const locations = [
     { address: 'Hà Nội', marketName: 'CH Viettel - 22 Mễ Trì Thượng - NTL - Hà Nội' },
     { address: 'Bắc Ninh', marketName: 'CHUQ Viettel - 209 LTK - Khu 6 - Thị Cầu - Bắc Ninh' },
 ]
-
 const contacts = [
     { contactName: 'Số điện thoai', tel: '0973.26.9999' },
     { contactName: 'Gmail', mail: 'nghiemtuan@simdeponline.vn' },

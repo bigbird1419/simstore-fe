@@ -14,24 +14,29 @@ export default function SideSimBar() {
     const { categorys } = useContext(CategoryContext)
 
     useEffect(() => {
-        const data1 = categorys.reduce((acc, cur) => {
-            return [
-                ...acc,
-                {
-                    path: `/${cur.code}`,
-                    title: `${cur.name}`
-                }
-            ]
-        }, [])
-        const data2 = networkers.reduce((acc, cur) => {
-            return [
-                ...acc,
-                {
-                    path: `/${cur.code}`,
-                    title: `${cur.name}`
-                }
-            ]
-        }, [])
+        let data1 = [], data2 = []
+        if (categorys?.length > 0) {
+            data1 = categorys.reduce((acc, cur) => {
+                return [
+                    ...acc,
+                    {
+                        path: `/${cur.code}`,
+                        title: `${cur.name}`
+                    }
+                ]
+            }, [])
+        }
+        if (networkers?.length > 0) {
+            data2 = networkers?.reduce((acc, cur) => {
+                return [
+                    ...acc,
+                    {
+                        path: `/${cur.code}`,
+                        title: `${cur.name}`
+                    }
+                ]
+            }, [])
+        }
         setData([...data1, ...data2])
     }, [categorys, networkers])
 

@@ -52,7 +52,7 @@ function AdminCategorys() {
                                             </tr>
                                         </thead>
                                         <tbody className="">
-                                            {categorys.map((category, i) => (
+                                            {categorys?.map((category, i) => (
                                                 <tr key={i}>
                                                     <td>
                                                         <span className="text-xs">{category.name}</span>

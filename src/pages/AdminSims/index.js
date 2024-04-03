@@ -1,5 +1,6 @@
 import classNames from "classnames/bind"
 import { useEffect, useState } from "react"
+import { NumericFormat } from 'react-number-format'
 
 import styles from './AdminSims.module.css'
 import Button from "../../components/Button"
@@ -108,16 +109,18 @@ function AdminSims() {
                                             </tr>
                                         </thead>
                                         <tbody className="">
-                                            {sims.map((sim, i) => (
+                                            {sims?.map((sim, i) => (
                                                 <tr key={i}>
                                                     <td>
                                                         <span className="text-xs">{sim.phoneNumber}</span>
                                                     </td>
                                                     <td>
-                                                        <span className="text-xs"><img className="w-28" src={sim.imgUrl} alt={sim.phoneNumber} /></span>
+                                                        <span className="text-xs"><img className="w-20" src={sim.imgUrl} alt={sim.phoneNumber} /></span>
                                                     </td>
                                                     <td>
-                                                        <span className="text-xs">{sim.price}</span>
+                                                        <span className="text-xs">
+                                                            <NumericFormat value={sim.price} displayType={'text'} thousandSeparator={true} />
+                                                        </span>
                                                     </td>
                                                     <td>
                                                         <span className="text-xs">{sim.description}</span>

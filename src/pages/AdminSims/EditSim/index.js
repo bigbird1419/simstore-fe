@@ -161,7 +161,7 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
                             <option value="" defaultValue={1} disabled selected>
                                 Chọn nhà mạng
                             </option>
-                            {networkers.map((networker) => (
+                            {networkers?.map((networker) => (
                                 <option key={networker.id} value={networker.id}
                                     defaultValue={networkerId === networker.id}
                                 >{networker.name}</option>
@@ -178,7 +178,7 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
                             <option value="" defaultValue={1} disabled selected>
                                 Chọn danh mục
                             </option>
-                            {categorys.map((category) => (
+                            {categorys?.map((category) => (
                                 <option key={category.id} value={category.id}
                                     defaultValue={networkerId === category.id}
                                 >{category.name}</option>

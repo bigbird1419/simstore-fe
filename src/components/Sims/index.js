@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from './Sims.module.css'
 import Pagination from '../Pagination'
@@ -41,15 +41,15 @@ function Sims({ query, category = '' }) {
                             <div className="col-6">
                                 <div className="flex justify-end mb-4">
                                     <select className=" rounded-md border-colorPrimary border-1 outline-none" onChange={e=>setDirection(e.target.value)}>
-                                        <option value={'asc'}>Giá cao đến thấp</option>
-                                        <option value={'desc'}>Giá thấp đến cao</option>
+                                        <option value={'asc'}>Giá thấp đến cao</option>
+                                        <option value={'desc'}>Giá cao đến thấp</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         {sims?.length > 0 ?
                             <div className="row">
-                                {sims.map((sim) => (
+                                {sims?.map((sim) => (
                                     <div className="col-6" key={sim.id}>
                                         <Sim sim={sim} />
                                     </div>
@@ -67,4 +67,4 @@ function Sims({ query, category = '' }) {
     )
 }
 
-export default memo(Sims)
+export default Sims
