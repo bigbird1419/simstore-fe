@@ -1,5 +1,5 @@
 import classNames from "classnames/bind"
-import { useLocation } from "react-router-dom"
+// import { useLocation } from "react-router-dom"
 
 import styles from './AdminSidebar.module.css'
 import routes from "../../../constants/routes"
@@ -33,7 +33,7 @@ const sidebars = [
 ]
 
 export default function AdminSidebar() {
-    const currentPage = useLocation().pathname
+    // const currentPage = useLocation().pathname
 
     return (
         <div className='wrapper'>

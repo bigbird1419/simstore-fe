@@ -16,14 +16,16 @@ function Sims({ query, category = '' }) {
     const [direction, setDirection] = useState('asc')
     const [isLoading, setIsLoading] = useState(true)
 
+    const getData = async (curPage, query, category, direction) => {
+        setIsLoading(true)
+        const res = await getSims(query, curPage, 10, category, category, 'price', direction)
+        setSims(res.data)
+        setTotalPage(res.totalPage)
+        setIsLoading(false)
+    }
+
     useEffect(() => {
-        const getData = async () => {
-            const res = await getSims(query, curPage, 10, category, category, 'price', direction)
-            setSims(res.data)
-            setTotalPage(res.totalPage)
-            setIsLoading(false)
-        }
-        getData()
+        getData(curPage, query, category, direction)
     }, [curPage, query, category, direction])
 
     return (
@@ -40,7 +42,7 @@ function Sims({ query, category = '' }) {
                             </div>
                             <div className="col-6">
                                 <div className="flex justify-end mb-4">
-                                    <select className=" rounded-md border-colorPrimary border-1 outline-none" onChange={e=>setDirection(e.target.value)}>
+                                    <select className=" rounded-md border-colorPrimary border-1 outline-none" onChange={e => setDirection(e.target.value)}>
                                         <option value={'asc'}>Giá thấp đến cao</option>
                                         <option value={'desc'}>Giá cao đến thấp</option>
                                     </select>

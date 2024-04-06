@@ -5,6 +5,7 @@ import Button from '../../../components/Button'
 import Messages from '../../../components/Messages'
 import routes from '../../../constants/routes'
 import { NetworkerContext } from '../../../context/NetworkerContext'
+import Loader from '../../../components/Loader'
 
 export default function EditNetworker({ networker = {}, onHidden = () => { } }) {
     const { postData, putData, deleteData } = useContext(NetworkerContext)
@@ -115,59 +116,60 @@ export default function EditNetworker({ networker = {}, onHidden = () => { } }) 
 
     return (
         <div className="wrapper">
-            <div className="mt-6">
-                <div className="row">
-                    <div className="col-6 ">
-                        <div className="mb-3">
-                            <label className="block text-md mb-2">Tên nhà mạng</label>
-                            <input className="w-100 px-4 py-2" type="text" placeholder="Tên nhà mạng" value={networkerName} onChange={e => setNetWorkerName(e.target.value)} />
+            {isLoading ? <Loader /> :
+                <div className="mt-6">
+                    <div className="row">
+                        <div className="col-6 ">
+                            <div className="mb-3">
+                                <label className="block text-md mb-2">Tên nhà mạng</label>
+                                <input className="w-100 px-4 py-2" type="text" placeholder="Tên nhà mạng" value={networkerName} onChange={e => setNetWorkerName(e.target.value)} />
+                            </div>
+                        </div>
+                        <div className="col-6 ">
+                            <div className="mb-3">
+                                <label className="block text-md mb-2">Đường dẫn tĩnh</label>
+                                <input className="w-100 px-4 py-2" type="text" placeholder="Đường dẫn tĩnh"
+                                    value={networkerCode}
+                                    onChange={e => setNetWorkerCode(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-12 ">
+                            <div className="mb-3">
+                                <label className="block text-md mb-2">Ảnh đại diện</label>
+                                <input type="file" onChange={e => handleFileChange(e)} />
+                            </div>
+                        </div>
+                        <div className="col-12 ">
+                            <div className="mb-3">
+                                <label className="block text-md mb-2">Mô tả</label>
+                                <textarea className="w-100 px-4 py-2"
+                                    value={networkerDescript}
+                                    onChange={e => setNetWorkerDescript(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="flex justify-around">
+                            <Button adminBtn
+                                onClick={hanldeCreateNetworker}
+                            >Thêm</Button>
+                            <Button adminBtn
+                                onClick={hanldeUpdateNetworker}
+                            >Sửa</Button>
+                            <Button adminBtn
+                                onClick={handleDeleteNetworkersById}
+                            >Xóa</Button>
+                            <Button adminBtn
+                                onClick={onHidden} to={routes.adminNetworker}
+                            >Hủy</Button>
                         </div>
                     </div>
-                    <div className="col-6 ">
-                        <div className="mb-3">
-                            <label className="block text-md mb-2">Đường dẫn tĩnh</label>
-                            <input className="w-100 px-4 py-2" type="text" placeholder="Đường dẫn tĩnh"
-                                value={networkerCode}
-                                onChange={e => setNetWorkerCode(e.target.value)}
-                            />
-                        </div>
-                    </div>
-                    <div className="col-12 ">
-                        <div className="mb-3">
-                            <label className="block text-md mb-2">Ảnh đại diện</label>
-                            <input type="file" onChange={e => handleFileChange(e)} />
-                        </div>
-                    </div>
-                    <div className="col-12 ">
-                        <div className="mb-3">
-                            <label className="block text-md mb-2">Mô tả</label>
-                            <textarea className="w-100 px-4 py-2"
-                                value={networkerDescript}
-                                onChange={e => setNetWorkerDescript(e.target.value)}
-                            />
-                        </div>
-                    </div>
-                    <div className="flex justify-around">
-                        <Button adminBtn
-                            onClick={hanldeCreateNetworker}
-                        >Thêm</Button>
-                        <Button adminBtn
-                            onClick={hanldeUpdateNetworker}
-                        >Sửa</Button>
-                        <Button adminBtn
-                            onClick={handleDeleteNetworkersById}
-                        >Xóa</Button>
-                        <Button adminBtn
-                            onClick={onHidden} to={routes.adminNetworker}
-                        >Hủy</Button>
-                    </div>
-                </div>
-                {isShowMessage && <Messages
-                    type={contentMessage.type}
-                    message={contentMessage.message}
-                    onClick={handleHiddenMessage}
-                />}
-            </div>
+                    {isShowMessage && <Messages
+                        type={contentMessage.type}
+                        message={contentMessage.message}
+                        onClick={handleHiddenMessage}
+                    />}
+                </div>}
         </div>
     )
 }

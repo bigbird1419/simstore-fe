@@ -74,13 +74,15 @@ export default function Sim() {
         }
     }
 
+    const getData = async (phoneNumber) => {
+        setIsLoading(true)
+        const res = await getSims(phoneNumber)
+        setSim(res.data)
+        setIsLoading(false)
+    }
+
     useEffect(() => {
-        const getData = async () => {
-            const res = await getSims(phoneNumber)
-            setSim(res.data)
-            setIsLoading(false)
-        }
-        getData()
+        getData(phoneNumber)
     }, [phoneNumber])
 
     return (
@@ -91,7 +93,7 @@ export default function Sim() {
                         {sim?.length === 1 && <h3 className="font-bold">Bán sim {sim[0].phoneNumber} Giá rẻ</h3>}
                         {sim?.length > 0 &&
                             sim?.map(sim => (
-                                <div className="row" key={sim.phoneNumber}>
+                                <div className="row my-6" key={sim.phoneNumber}>
                                     <div className="col-7">
                                         <div className="p-2 border h-full md:p-4 max-sm:p-1">
                                             <h3 className="mb-1">Số sim: <Button to={`/sim/${sim.phoneNumber}`} className="md:text-2xl max-sm:text-md text-colorSecondary font-bold hover:text-colorPrimary duration-300 transition-all">{sim.phoneNumber}</Button></h3>
