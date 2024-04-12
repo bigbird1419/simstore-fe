@@ -52,7 +52,7 @@ function Pagination({ totalPage, curPage, setCurPage = () => { } }) {
                             </Button>
                         ))}
                         <Button normal onClick={() => handleNextPage()}
-                            className={cx('block text-sm px-3 py-1 m-2', curPage === totalPage - 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
+                            className={cx('block text-sm px-3 py-1 m-2', curPage === totalPage + 1 ? 'cursor-not-allowed' : 'bg-colorPrimary text-white')}
                         >
                             <i className="fa-solid fa-angle-right"></i>
                         </Button>

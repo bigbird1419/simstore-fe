@@ -11,22 +11,22 @@ const sidebars = [
     {
         title: 'Nhà mạng', path: routes.adminNetworker, icon: <i className="fas fa-credit-card"></i>,
         children: [
-            { title: 'Thêm mới', path: routes.adminNetworkerEdit, icon: <i class="fas fa-plus"></i> },
-            { title: 'Xem thống kê', path: routes.admin, icon: <i class="fas fa-exclamation"></i> }
+            { title: 'Thêm mới', path: routes.adminNetworkerEdit, icon: <i className="fas fa-plus"></i> },
+            { title: 'Xem thống kê', path: routes.admin, icon: <i className="fas fa-exclamation"></i> }
         ]
     },
     {
         title: 'Danh mục', path: routes.adminCategory, icon: <i className="fas fa-th"></i>,
         children: [
-            { title: 'Thêm mới', path: routes.adminCategoryEdit, icon: <i class="fas fa-plus"></i> },
-            { title: 'Xem thống kê', path: routes.admin, icon: <i class="fas fa-exclamation"></i> }
+            { title: 'Thêm mới', path: routes.adminCategoryEdit, icon: <i className="fas fa-plus"></i> },
+            { title: 'Xem thống kê', path: routes.admin, icon: <i className="fas fa-exclamation"></i> }
         ]
     },
     {
         title: 'Quản lý sim', path: routes.adminSim, icon: <i className="fas fa-sim-card"></i>,
         children: [
-            { title: 'Thêm mới', path: routes.adminSimEdit, icon: <i class="fas fa-plus"></i> },
-            { title: 'Xem thống kê', path: routes.admin, icon: <i class="fas fa-exclamation"></i> }
+            { title: 'Thêm mới', path: routes.adminSimEdit, icon: <i className="fas fa-plus"></i> },
+            { title: 'Xem thống kê', path: routes.admin, icon: <i className="fas fa-exclamation"></i> }
         ]
     },
     { title: 'Đơn hàng', path: routes.adminClientOrder, icon: <i className="fas fa-shopping-cart"></i> },

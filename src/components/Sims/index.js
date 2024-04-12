@@ -33,22 +33,24 @@ function Sims({ query, category = '' }) {
             {isLoading ? <Loader /> :
                 <div className={cx('my-4')}>
                     <div>
-                        <div className="row">
-                            <div className="col-6">
-                                {/* <select>
+                        {category.length === 0 &&
+                            <div className="row">
+                                <div className="col-6">
+                                    {/* <select>
                                     <option>Sắp xếp theo giá</option>
                                     <option>Sắp xếp theo nhà mạng</option>
                                 </select> */}
-                            </div>
-                            <div className="col-6">
-                                <div className="flex justify-end mb-4">
-                                    <select className=" rounded-md border-colorPrimary border-1 outline-none" onChange={e => setDirection(e.target.value)}>
-                                        <option value={'asc'}>Giá thấp đến cao</option>
-                                        <option value={'desc'}>Giá cao đến thấp</option>
-                                    </select>
+                                </div>
+                                <div className="col-6">
+                                    <div className="flex justify-end mb-4">
+                                        <select className=" rounded-md border-colorPrimary border-1 outline-none" onChange={e => setDirection(e.target.value)} value={direction}>
+                                            <option value={'asc'}>Giá thấp đến cao</option>
+                                            <option value={'desc'}>Giá cao đến thấp</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                         {sims?.length > 0 ?
                             <div className="row">
                                 {sims?.map((sim) => (

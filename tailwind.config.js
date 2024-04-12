@@ -20,6 +20,9 @@ module.exports = {
       },
       zIndex: {
         '100': '100',
+      },
+      fontSize: {
+        sml: '0.6rem'
       }
     },
   },

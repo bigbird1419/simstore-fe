@@ -16,17 +16,18 @@ function AdminHome() {
     const [dataOrder, setDataOrder] = useState([])
     const [dataNetworker, setDataNetworker] = useState([])
 
+    const getData = async () => {
+        const totalSim = await getTotalSim()
+        const totalClientorder = await getTotalClientOrders()
+        const tmp1 = await getStatistical()
+        const tmp2 = await getStatisticalByNetworker()
+        setTotalSims(totalSim.data)
+        setTotalClientorders(totalClientorder.data)
+        setDataOrder(tmp1.data)
+        setDataNetworker(tmp2.data)
+    }
+
     useEffect(() => {
-        const getData = async () => {
-            const totalSim = await getTotalSim()
-            const totalClientorder = await getTotalClientOrders()
-            const tmp1 = await getStatistical()
-            const tmp2 = await getStatisticalByNetworker()
-            setTotalSims(totalSim.data)
-            setTotalClientorders(totalClientorder.data)
-            setDataOrder(tmp1.data)
-            setDataNetworker(tmp2.data)
-        }
         getData()
     }, [])
 
