@@ -7,8 +7,6 @@ export const ExportCSV = ({ csvData, fileName }) => {
     const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
     const fileExtension = '.xlsx';
 
-    console.log(csvData, fileName)
-
     const exportToCSV = (csvData, fileName) => {
         const ws = utils.json_to_sheet(csvData);
         const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };

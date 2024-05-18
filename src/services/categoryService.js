@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getCategorys = async () => {
     try {
-        const res = await axios.get('http://localhost:8088/api/v1/categorys')
+        const res = await axios.get('https://simstore.osc-fr1.scalingo.io/api/v1/categorys')
         return res.data;
     } catch (error) {
         console.log(error);
@@ -11,7 +11,7 @@ export const getCategorys = async () => {
 
 export const getCategoryById = async (id) => {
     try {
-        const res = await axios.get(`http://localhost:8088/api/v1/categorys/${id}`)
+        const res = await axios.get(`https://simstore.osc-fr1.scalingo.io/api/v1/categorys/${id}`)
         return res.data;
     } catch (error) {
         console.log(error);
@@ -20,7 +20,7 @@ export const getCategoryById = async (id) => {
 
 export const postCategory = async (data) => {
     try {
-        const res = await axios.post('http://localhost:8088/api/v1/categorys', data)
+        const res = await axios.post('https://simstore.osc-fr1.scalingo.io/api/v1/categorys', data)
         return res.data
     } catch (error) {
         console.log(error)
@@ -28,7 +28,7 @@ export const postCategory = async (data) => {
 }
 export const putCategory = async (id, data) => {
     try {
-        const res = await axios.put(`http://localhost:8088/api/v1/categorys/${id}`, data)
+        const res = await axios.put(`https://simstore.osc-fr1.scalingo.io/api/v1/categorys/${id}`, data)
         return res.data
     } catch (error) {
         console.log(error)
@@ -37,7 +37,7 @@ export const putCategory = async (id, data) => {
 
 export const delCategory = async (ids = []) => {
     try {
-        const res = await axios.delete('http://localhost:8088/api/v1/categorys/', ids)
+        const res = await axios.delete('https://simstore.osc-fr1.scalingo.io/api/v1/categorys/', ids)
         return res.data
     } catch (error) {
         console.log(error)
@@ -45,7 +45,7 @@ export const delCategory = async (ids = []) => {
 }
 export const delCategoryById = async (id) => {
     try {
-        const res = await axios.delete(`http://localhost:8088/api/v1/categorys/${id}`)
+        const res = await axios.delete(`https://simstore.osc-fr1.scalingo.io/api/v1/categorys/${id}`)
         return res.data
     } catch (error) {
         console.log(error)

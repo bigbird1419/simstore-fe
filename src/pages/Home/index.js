@@ -12,8 +12,12 @@ export default function Home() {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await getNetworkers();
-            setNetworkers(res.data)
+            try {
+                const res = await getNetworkers();
+                setNetworkers(res.data)
+            } catch (error) {
+                console.log('Không lấy được dữ liệu')
+            }
         }
         getData()
     }, [])

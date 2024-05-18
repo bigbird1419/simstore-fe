@@ -20,7 +20,7 @@ export default function EditSim({ sim = {}, onHidden = () => { } }) {
     const [networkerId, setNetworkerId] = useState('')
     const [isShowMessage, setIsShowMessage] = useState(false)
     const [contentMessage, setContentMessage] = useState({})
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleFileChange = e => {
         setFileImg(e.target.files[0])
