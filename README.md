@@ -1,8 +1,14 @@
+# Sim store
+
 ## Introduction
 
 This is a web application developed to manage a phone SIM card store. The application provides basic functionalities such as SIM card searching, ordering, viewing SIM card details, order management, SIM card management, network provider management, SIM category management, and order statistics.
 
-## Start `npm start`
+## Installation and Running the Application
+
+1. Clone the repository: git clone ...
+2. Open it on commandline
+3. run: npm start
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
